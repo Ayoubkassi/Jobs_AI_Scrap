@@ -10,7 +10,7 @@ package User;
  */
 public class Job {
     
-     static int Id = 1;
+    static int Id = 0;
     private String title;
     private String company;
     private String link;
@@ -19,7 +19,7 @@ public class Job {
         this.title = title;
         this.company = company;
         this.link = link;
-        Id++;
+        
     }
     
     public Job(){
@@ -52,12 +52,12 @@ public class Job {
 
  
 
-    public static int getId() {
+    public int getId() {
         return Id;
     }
 
-    public static void setId(int Id) {
-        Job.Id = Id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     @Override

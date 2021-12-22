@@ -158,6 +158,7 @@ public class Basic extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
@@ -183,9 +184,9 @@ public class Basic extends javax.swing.JFrame {
                     
                         System.out.println("Connected!!");
                         
-                    Crud cp = null;
+                    Intermed cp = null;
                     
-                    cp = new Crud();
+                    cp = new Intermed();
                     
                     cp.setVisible(true);
                     this.setVisible(false);
