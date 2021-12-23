@@ -126,7 +126,7 @@ public class Recrute {
 //                    }
 //
 //        
-              FileWriter fw = new FileWriter("recrutesfrontend.txt");
+              FileWriter fw = new FileWriter("recrutesfrontend2.txt");
          
 
 //           
