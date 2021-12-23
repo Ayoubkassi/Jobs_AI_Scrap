@@ -5,6 +5,7 @@
 package User;
 
 import com.mysql.cj.log.Log;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
@@ -34,69 +35,67 @@ public class Recrute {
                 secondary+=str;
             }
             i++;
-        }
-        
+        }     
         
         String base_url = first_url+secondary+"&keyword="+secondary ;
         
-        //System.out.println(base_url);
-        //for loop
+         ArrayList<Offre> jobs = new ArrayList<Offre>();
+        String s = "123456";
         
-        final Document document = Jsoup.connect(base_url).get();
-        //System.out.println(document);
-        //Elements scriptElements = document.select("div.slide-block");
-         Elements scriptElements = document.select("ul.job-list.job-list2 > li");
-         
-        ArrayList<Offre> jobs = new ArrayList<Offre>();
+        for (int k = 0; k <6 ; k++) {
+                StringBuilder url = new StringBuilder(base_url);
+                char c = s.charAt(k);
 
-         //System.out.println(scriptElements);
-            int sizeEle = scriptElements.size();
-            for (int j = 0; j < sizeEle; j++) {
-                   //System.out.println(scriptElements.get(0).select("div.section").text());
+                url.setCharAt(42, c);
+                        
+                
+                final Document document = Jsoup.connect(url.toString()).get();
+                Elements scriptElements = document.select("ul.job-list.job-list2 > li");
+         
+
+                int sizeEle = scriptElements.size();
+                for (int j = 0; j < sizeEle; j++) {
                    try{
                    
-                   Elements division = scriptElements.get(j).select("div.section");
-                   String title = division.select("h2 > a").text();
-//                   System.out.println(title);
-                   Elements infos = division.select("div.holder");
-                   
-                   String requirements = infos.get(0).select("span").text();
-                   //System.out.println(requirements);
-                   String infoCompany = infos.get(0).select("span").get(1).text();
-                   
-                   String description = infos.get(0).select("span").get(2).text();
-                   
-                   //System.out.println(description);
-                   
-                   String date = infos.get(0).select("em").text();
-                   //System.out.println(date);
-                   
-                   //additional infos 
-                   
-                   String additionalInfo = infos.get(0).select("ul").text();
-                   
-                   //System.out.println(additionalInfo);
-                   
-                   Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo);
-                   jobs.add(offre);
-                   
-                   
-                   
+                        Elements division = scriptElements.get(j).select("div.section");
+                        String title = division.select("h2 > a").text();
+                        Elements infos = division.select("div.holder");                  
+                        String requirements = infos.get(0).select("span").text();
+                        String infoCompany = infos.get(0).select("span").get(1).text();                 
+                        String description = infos.get(0).select("span").get(2).text();   
+                        String date = infos.get(0).select("em").text();                               
+                        String additionalInfo = infos.get(0).select("ul").text();
+                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo);
+                        jobs.add(offre);
+                        
                    }catch(Exception e){
-                       e.printStackTrace();
+                          e.printStackTrace();
                    }
                    
-                   //System.out.println(infoCompany);
             }
+        }
+        
             
             
-            //print Jobs 
             
             for(Offre off : jobs){
                 System.out.println(off.toString());
             }
 
         
+              FileWriter fw = new FileWriter("recrutesfrontend.txt");
+         
+
+//           
+           
+             for(Offre of : jobs){
+                 System.out.println(of.toString());
+                 fw.write(of.toString());
+                 fw.write(System.getProperty("line.separator"));
+                 
+             }
+             
+             fw.close();
         
         
         
