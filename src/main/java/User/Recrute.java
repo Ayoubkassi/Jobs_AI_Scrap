@@ -4,10 +4,17 @@
  */
 package User;
 
+import static User.SaveJobsDB.jobTitle;
 import com.mysql.cj.log.Log;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -41,9 +48,17 @@ public class Recrute {
         
          ArrayList<Offre> jobs = new ArrayList<Offre>();
         String s = "123456";
-        
-        for (int k = 0; k <6 ; k++) {
-                StringBuilder url = new StringBuilder(base_url);
+      for (int l = 0; l <= 2; l++) {
+                 StringBuilder url1 = new StringBuilder(base_url);
+                char b = s.charAt(l);
+
+                url1.setCharAt(38, b);
+                int foi = 6/(l+1);
+                if(l == 2){
+                    foi = 2;
+                }
+        for (int k = 0; k <foi ; k++) {
+                StringBuilder url = new StringBuilder(url1.toString());
                 char c = s.charAt(k);
 
                 url.setCharAt(42, c);
@@ -75,14 +90,42 @@ public class Recrute {
             }
         }
         
+        }
+        
             
             
+            Connection con;
+            Statement st;
             
             for(Offre off : jobs){
                 System.out.println(off.toString());
+                
+//                try {
+//                    Class.forName("com.mysql.jdbc.Driver");
+//                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java", "root", "guillaume");
+//
+//                    String sql = "INSERT INTO `Recrute`(`title`, `requirements`, `companyInfo`,`description`,`date`,`additionalInfo`) "
+//                    + "VALUES ('" + off.title + "','" + off.requirements + "','" + off.companyInfo + "','" + off.description + "','" + off.date + "','" + off.additionalInfo + "')";
+//                    
+//                    st = con.createStatement();
+//                    st.execute(sql);
+//            
+//                } catch (ClassNotFoundException | SQLException ex) {
+//                    Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
+//                }
             }
+            
+            
+            
+             
+           
 
-        
+
+//                    }catch(Exception e){
+//                        e.printStackTrace();
+//                    }
+//
+//        
               FileWriter fw = new FileWriter("recrutesfrontend.txt");
          
 
@@ -96,7 +139,7 @@ public class Recrute {
              }
              
              fw.close();
-        
+//        
         
         
         
