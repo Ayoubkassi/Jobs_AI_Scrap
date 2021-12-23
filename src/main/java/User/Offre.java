@@ -1,0 +1,107 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package User;
+
+/**
+ *
+ * @author ryota
+ */
+public class Offre {
+    int id; 
+    String title;
+    String requirements;
+    String companyInfo ;
+    String description ;
+    String date ;
+    String  additionalInfo;
+
+    public Offre() {
+    }
+
+    
+    
+    public Offre(int id, String title, String requirements, String companyInfo, String description, String date, String additionalInfo) {
+        this.id = id;
+        this.title = title;
+        this.requirements = requirements;
+        this.companyInfo = companyInfo;
+        this.description = description;
+        this.date = date;
+        this.additionalInfo = additionalInfo;
+    }
+
+    public Offre(String title, String requirements, String companyInfo, String description, String date, String additionalInfo) {
+        this.title = title;
+        this.requirements = requirements;
+        this.companyInfo = companyInfo;
+        this.description = description;
+        this.date = date;
+        this.additionalInfo = additionalInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Offre{" + "id=" + id + ", title=" + title + ", requirements=" + requirements + ", companyInfo=" + companyInfo + ", description=" + description + ", date=" + date + ", additionalInfo=" + additionalInfo + '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+
+    public String getCompanyInfo() {
+        return companyInfo;
+    }
+
+    public void setCompanyInfo(String companyInfo) {
+        this.companyInfo = companyInfo;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
+    
+    
+    
+}

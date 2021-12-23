@@ -82,11 +82,11 @@ public class Scrap {
     public static void getLinks(String jobTitle, int n) throws IOException{
         String[] words = jobTitle.split(" ");
         int size = words.length;
-        String first_url = "https://fr.indeed.com/jobs?q=";
+        String first_url = "https://www.rekrute.com/offres.html?s=1&p=1&o=1&query=software+engineer&keyword=software+engineer";
         String med_url= "";
         for (int i = 0; i < size; i++) {
             if(i == size-1){
-                med_url+=words[i].toLowerCase()+"&start=";
+                med_url+=words[i].toLowerCase()+"";
             }
             else{
                 med_url+=words[i].toLowerCase()+"+";
