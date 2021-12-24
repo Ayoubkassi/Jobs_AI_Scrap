@@ -6,13 +6,16 @@ package User;
 
 import static User.SaveJobsDB.jobTitle;
 import com.mysql.cj.log.Log;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jsoup.Jsoup;
@@ -74,10 +77,13 @@ public class Recrute {
                    
                         Elements division = scriptElements.get(j).select("div.section");
                         String title = division.select("h2 > a").text();
+                        String link1 = division.select("h2 > a").first().attr("href");
+                        String link = "https://www.rekrute.com"+link1;
                         Elements infos = division.select("div.holder");                  
                         String requirements = infos.get(0).select("span").text();
                         String infoCompany = infos.get(0).select("span").get(1).text();                 
-                        String description = infos.get(0).select("span").get(2).text();   
+                        String description = infos.get(0).select("span").get(2).text(); 
+                        
                         String date = infos.get(0).select("em").text();                               
                         String additionalInfo = infos.get(0).select("ul").text();
                         Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo);
@@ -94,11 +100,13 @@ public class Recrute {
         
             
             
-            Connection con;
-            Statement st;
-            
+         
+            File csvFile = new File("data.csv");
+            PrintWriter out = new PrintWriter(csvFile);
             for(Offre off : jobs){
-                System.out.println(off.toString());
+                //System.out.println(off.toString());
+                out.printf("%s, %s, %s, %s\n", off.title,off.requirements,off.date,off.companyInfo);
+                
                 
 //                try {
 //                    Class.forName("com.mysql.jdbc.Driver");
@@ -115,6 +123,8 @@ public class Recrute {
 //                }
             }
             
+            out.close();
+            
             
             
              
@@ -126,19 +136,19 @@ public class Recrute {
 //                    }
 //
 //        
-              FileWriter fw = new FileWriter("recrutesfrontend2.txt");
-         
-
+//              FileWriter fw = new FileWriter("recrutesfrontend2.txt");
+//         
+//
+////           
 //           
-           
-             for(Offre of : jobs){
-                 System.out.println(of.toString());
-                 fw.write(of.toString());
-                 fw.write(System.getProperty("line.separator"));
-                 
-             }
-             
-             fw.close();
+//             for(Offre of : jobs){
+//                 System.out.println(of.toString());
+//                 fw.write(of.toString());
+//                 fw.write(System.getProperty("line.separator"));
+//                 
+//             }
+//             
+//             fw.close();
 //        
         
         
@@ -147,10 +157,36 @@ public class Recrute {
         
     }
     
+    
+    public static void singleJob(String url) throws IOException{
+         final Document document = Jsoup.connect(url).get();
+         
+         
+         String g1 = document.select(".contentbloc > div").get(3).children().text();
+         String g2 = document.select(".contentbloc > div").get(4).children().text();
+
+         StringBuilder poste = new StringBuilder(g1);
+         StringBuilder requirements = new StringBuilder(g2);
+         
+         System.out.println(poste.toString());
+
+         // on a 2 info les plus important le profil cherche et requirements
+         
+         //mtn on va chercher si existe des mots cle 
+         
+         
+         
+       
+         
+         
+         
+    }
+    
     public static void main(String[] args) throws IOException{
         System.out.println("Bismi Allah");
         
         getLinks("frontend engineer",10);
+        //singleJob("https://www.rekrute.com/offre-emploi-responsable-administration-du-personnel-et-affaires-juridiques-recrutement-orh-assessment-casablanca-132525.html");
     }
     
 }
