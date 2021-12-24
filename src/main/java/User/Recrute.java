@@ -141,7 +141,7 @@ public class Recrute {
 
          int count = 0;
          for(Offre job : jobs){
-             if(count < 40){
+             if(count < 10){
             final Document document = Jsoup.connect(job.link).get();
             
             
@@ -181,6 +181,7 @@ public class Recrute {
          
          File csvFile = new File("data.csv");
          PrintWriter out = new PrintWriter(csvFile);
+         
 
          // on a 2 info les plus important le profil cherche et requirements
          
@@ -188,7 +189,15 @@ public class Recrute {
          
     for (Map.Entry<Integer, ArrayList<Integer>> entry : preProc.entrySet()) {
         System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        ArrayList<Integer> data = new ArrayList<Integer>();
+        data = entry.getValue();
+        
+            out.printf("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n", 
+             data.get(0), data.get(1), data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7), data.get(8), data.get(9), data.get(10), data.get(11), data.get(12), data.get(13), data.get(14), data.get(15), data.get(16), data.get(17), data.get(18), data.get(19), data.get(20), data.get(21), data.get(22), data.get(23), data.get(24), data.get(25), data.get(26), data.get(27), data.get(28), data.get(29), data.get(30), data.get(31), data.get(32), data.get(33), data.get(34), data.get(35), data.get(36), data.get(37), data.get(38), data.get(39), data.get(40), data.get(41), data.get(42), data.get(43), data.get(44));
+
     }
+    
+     out.close();
          
          
        
