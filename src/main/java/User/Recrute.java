@@ -141,7 +141,7 @@ public class Recrute {
 
          int count = 0;
          for(Offre job : jobs){
-             if(count < 10){
+             if(count < 40){
             final Document document = Jsoup.connect(job.link).get();
             
             
@@ -179,7 +179,7 @@ public class Recrute {
          
             }
          
-         File csvFile = new File("data.csv");
+         File csvFile = new File("dataset.csv");
          PrintWriter out = new PrintWriter(csvFile);
          
 
