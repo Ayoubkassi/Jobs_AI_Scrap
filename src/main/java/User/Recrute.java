@@ -15,7 +15,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jsoup.Jsoup;
@@ -29,7 +31,7 @@ import org.jsoup.select.Elements;
  */
 public class Recrute {
     
-    public static void getLinks(String jobTitle, int n) throws IOException{
+    public static ArrayList<Offre> getJobs(String jobTitle, int n) throws IOException{
         String[] words = jobTitle.split(" ");
         int size = words.length;
         String first_url = "https://www.rekrute.com/offres.html?s=1&p=2&o=1";
@@ -86,7 +88,7 @@ public class Recrute {
                         
                         String date = infos.get(0).select("em").text();                               
                         String additionalInfo = infos.get(0).select("ul").text();
-                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo);
+                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo,link);
                         jobs.add(offre);
                         
                    }catch(Exception e){
@@ -99,42 +101,11 @@ public class Recrute {
         }
         
             
-            
-         
-            File csvFile = new File("data.csv");
-            PrintWriter out = new PrintWriter(csvFile);
-            for(Offre off : jobs){
-                //System.out.println(off.toString());
-                out.printf("%s, %s, %s, %s\n", off.title,off.requirements,off.date,off.companyInfo);
-                
-                
-//                try {
-//                    Class.forName("com.mysql.jdbc.Driver");
-//                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java", "root", "guillaume");
-//
-//                    String sql = "INSERT INTO `Recrute`(`title`, `requirements`, `companyInfo`,`description`,`date`,`additionalInfo`) "
-//                    + "VALUES ('" + off.title + "','" + off.requirements + "','" + off.companyInfo + "','" + off.description + "','" + off.date + "','" + off.additionalInfo + "')";
-//                    
-//                    st = con.createStatement();
-//                    st.execute(sql);
-//            
-//                } catch (ClassNotFoundException | SQLException ex) {
-//                    Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-            }
-            
-            out.close();
-            
-            
-            
-             
            
+            
+            
 
 
-//                    }catch(Exception e){
-//                        e.printStackTrace();
-//                    }
-//
 //        
 //              FileWriter fw = new FileWriter("recrutesfrontend2.txt");
 //         
@@ -150,6 +121,8 @@ public class Recrute {
 //             
 //             fw.close();
 //        
+
+        return jobs;
         
         
         
@@ -158,22 +131,64 @@ public class Recrute {
     }
     
     
-    public static void singleJob(String url) throws IOException{
-         final Document document = Jsoup.connect(url).get();
+    public static void singleJob() throws IOException{
+        
+         ArrayList<Offre> jobs= new ArrayList<Offre>();
+        
+         jobs = getJobs("frontend engineer",10);
          
-         
-         String g1 = document.select(".contentbloc > div").get(3).children().text();
-         String g2 = document.select(".contentbloc > div").get(4).children().text();
+         HashMap<Integer,ArrayList<Integer>> preProc = new HashMap<Integer,ArrayList<Integer>>();
 
-         StringBuilder poste = new StringBuilder(g1);
-         StringBuilder requirements = new StringBuilder(g2);
+         int count = 0;
+         for(Offre job : jobs){
+             if(count < 40){
+            final Document document = Jsoup.connect(job.link).get();
+            
+            
+            String g1 = document.select(".contentbloc > div").get(3).children().text();
+            String g2 = document.select(".contentbloc > div").get(4).children().text();
+
+            StringBuilder poste = new StringBuilder(g1);
+            StringBuilder requirements = new StringBuilder(g2);
+            
+             String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
+            ,"php","c","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
+            "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
+            System.out.println("*****************************");
+            System.out.println(technologies.length);
+            
+             ArrayList<Integer> techs = new ArrayList<Integer>();
+             for (int i = 0; i < 45; i++) {
+                 if(g2.toLowerCase().contains(technologies[i])){
+                     techs.add(1);
+                     preProc.put(count, techs);
+                }
+                 else{
+                     techs.add(0);
+                     preProc.put(count, techs);
+                 }
+             }
+             
+             count++;
+            
+            
          
-         System.out.println(poste.toString());
+         } else{
+                 break;
+             }
+         
+            }
+         
+         File csvFile = new File("data.csv");
+         PrintWriter out = new PrintWriter(csvFile);
 
          // on a 2 info les plus important le profil cherche et requirements
          
          //mtn on va chercher si existe des mots cle 
          
+    for (Map.Entry<Integer, ArrayList<Integer>> entry : preProc.entrySet()) {
+        System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    }
          
          
        
@@ -185,7 +200,7 @@ public class Recrute {
     public static void main(String[] args) throws IOException{
         System.out.println("Bismi Allah");
         
-        getLinks("frontend engineer",10);
+        singleJob();
         //singleJob("https://www.rekrute.com/offre-emploi-responsable-administration-du-personnel-et-affaires-juridiques-recrutement-orh-assessment-casablanca-132525.html");
     }
     

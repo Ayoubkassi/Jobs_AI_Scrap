@@ -16,13 +16,14 @@ public class Offre {
     String description ;
     String date ;
     String  additionalInfo;
+    String link;
 
     public Offre() {
     }
 
     
     
-    public Offre(int id, String title, String requirements, String companyInfo, String description, String date, String additionalInfo) {
+    public Offre(int id, String title, String requirements, String companyInfo, String description, String date, String additionalInfo, String link) {
         this.id = id;
         this.title = title;
         this.requirements = requirements;
@@ -30,8 +31,21 @@ public class Offre {
         this.description = description;
         this.date = date;
         this.additionalInfo = additionalInfo;
+        this.link = link;
     }
 
+    public Offre(String title, String requirements, String companyInfo, String description, String date, String additionalInfo, String link) {
+        this.title = title;
+        this.requirements = requirements;
+        this.companyInfo = companyInfo;
+        this.description = description;
+        this.date = date;
+        this.additionalInfo = additionalInfo;
+        this.link = link;
+    }
+    
+    //without link
+    
     public Offre(String title, String requirements, String companyInfo, String description, String date, String additionalInfo) {
         this.title = title;
         this.requirements = requirements;
@@ -46,6 +60,8 @@ public class Offre {
         return "Offre{" + "id=" + id + ", title=" + title + ", requirements=" + requirements + ", companyInfo=" + companyInfo + ", description=" + description + ", date=" + date + ", additionalInfo=" + additionalInfo + '}';
     }
 
+    
+    
     public int getId() {
         return id;
     }
@@ -100,6 +116,14 @@ public class Offre {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
     
     
