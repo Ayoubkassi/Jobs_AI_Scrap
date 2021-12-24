@@ -22,13 +22,13 @@ public class ClassificationJ48 {
         
         
         //create and build the classifier
-        J48 nb = new J48();
+        J48 tree = new J48();
         
-        nb.buildClassifier(dataset);
+        tree.buildClassifier(dataset);
         
         //print result
         
-        System.out.println(nb.getCapabilities().toString());
+        System.out.println(tree.graph());
         
     }
 }

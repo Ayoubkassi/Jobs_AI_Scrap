@@ -22,13 +22,13 @@ public class ClassificationSVM {
         
         
         //create and build the classifier
-        SMO nb = new SMO();
+        SMO svm = new SMO();
         
-        nb.buildClassifier(dataset);
+        svm.buildClassifier(dataset);
         
         //print result
         
-        System.out.println(nb.getCapabilities().toString());
+        System.out.println(svm.getCapabilities().toString());
         
     }
 }
