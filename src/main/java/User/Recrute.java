@@ -135,7 +135,7 @@ public class Recrute {
         
          ArrayList<Offre> jobs= new ArrayList<Offre>();
         
-         jobs = getJobs("frontend engineer",10);
+         jobs = getJobs("java",10);
          
          HashMap<Integer,ArrayList<Integer>> preProc = new HashMap<Integer,ArrayList<Integer>>();
 
@@ -152,7 +152,7 @@ public class Recrute {
             StringBuilder requirements = new StringBuilder(g2);
             
              String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
-            ,"php","c","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
+            ,"php","flutter","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
             "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
             System.out.println("*****************************");
             System.out.println(technologies.length);
@@ -179,7 +179,7 @@ public class Recrute {
          
             }
          
-         File csvFile = new File("dataset.csv");
+         File csvFile = new File("javaDev.csv");
          PrintWriter out = new PrintWriter(csvFile);
          
 
