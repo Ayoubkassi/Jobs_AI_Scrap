@@ -46,16 +46,16 @@ public class LoadData {
     
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception{
         
-//        DataSource source =  new DataSource("/home/ryota/Desktop/data.arff");
-//        Instances dataset = source.getDataSet();
+        DataSource source =  new DataSource("/home/ryota/Desktop/data.arff");
+        Instances dataset = source.getDataSet();
 //        //Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/data.arff")));
 //        
 //        //System.out.println(dataset.toSummaryString());
 //        
-//        ArffSaver saver = new ArffSaver();
-//        saver.setInstances(dataset);
-//        saver.setFile(new File("/home/ryota/Desktop/new1.arff"));
-//        saver.writeBatch();
+        ArffSaver saver = new ArffSaver();
+        saver.setInstances(dataset);
+        saver.setFile(new File("/home/ryota/Desktop/dataset.arff"));
+        saver.writeBatch();
 //        
 //        //classifing
 //        

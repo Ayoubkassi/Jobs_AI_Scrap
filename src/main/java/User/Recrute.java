@@ -53,21 +53,33 @@ public class Recrute {
         String base_url = first_url+secondary+"&keyword="+secondary ;
         
          ArrayList<Offre> jobs = new ArrayList<Offre>();
-        String s = "12345678";
+        String s = "1234567891";
       for (int l = 0; l <= 2; l++) {
                  StringBuilder url1 = new StringBuilder(base_url);
                 char b = s.charAt(l);
 
                 url1.setCharAt(38, b);
-                int foi = 8/(l+1);
+                //int foi = 9/(l+1);
+                int foi = 10;
                 if(l == 2){
                     foi = 2;
                 }
-        for (int k = 0; k <foi ; k++) {
-                StringBuilder url = new StringBuilder(url1.toString());
+                else if (l == 1){
+                    foi = 4;
+                }
+        for (int k = 0; k <=foi ; k++) {
+             StringBuilder url = new StringBuilder(url1.toString());
+
+            if(k == foi){
+                url.setCharAt(42,'1');
+                //url.setCharAt(43,'0');
+                url.append('0');
+            }else{
+                System.out.println(k);
                 char c = s.charAt(k);
 
                 url.setCharAt(42, c);
+            }
                         
                 
                 final Document document = Jsoup.connect(url.toString()).get();
@@ -204,7 +216,7 @@ public class Recrute {
              
          
          
-         File csvFile = new File("completeData.csv");
+         File csvFile = new File("bestData.csv");
          PrintWriter out = new PrintWriter(csvFile);
          
 

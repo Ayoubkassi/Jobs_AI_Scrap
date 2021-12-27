@@ -19,7 +19,7 @@ public class Prediction {
     
     public static void main(String[] args) throws Exception{
         //load training set
-       ConverterUtils.DataSource source =  new ConverterUtils.DataSource("/home/ryota/Desktop/new1.arff");
+       ConverterUtils.DataSource source =  new ConverterUtils.DataSource("/home/ryota/Desktop/CRUD/Java_Desktop/dataset.arff");
        Instances trainingDataset = source.getDataSet();
        
        //specifiy the class attribute
@@ -48,7 +48,7 @@ public class Prediction {
         
         
         //load testDataset
-        ConverterUtils.DataSource source1 =  new ConverterUtils.DataSource("/home/ryota/Desktop/data.arff");
+        ConverterUtils.DataSource source1 =  new ConverterUtils.DataSource("/home/ryota/Desktop/CRUD/Java_Desktop/dataset.arff");
         Instances testDataset = source1.getDataSet();
        
        //specifiy the class attribute
@@ -68,7 +68,13 @@ public class Prediction {
             double predNB = nb.classifyInstance(newInst);
             
             String predString = testDataset.classAttribute().value((int) predNB);
-            System.out.println(actual+ "     --------------   "+predString);
+            //System.out.println(actual+ "     --------------   "+predString);
+            if(actual.equals(predString)){
+                System.out.println(1);
+            }
+            else{
+                System.out.println(0);
+            }
             
             
             
