@@ -52,13 +52,13 @@ public class Recrute {
         String base_url = first_url+secondary+"&keyword="+secondary ;
         
          ArrayList<Offre> jobs = new ArrayList<Offre>();
-        String s = "123456";
+        String s = "12345678";
       for (int l = 0; l <= 2; l++) {
                  StringBuilder url1 = new StringBuilder(base_url);
                 char b = s.charAt(l);
 
                 url1.setCharAt(38, b);
-                int foi = 6/(l+1);
+                int foi = 8/(l+1);
                 if(l == 2){
                     foi = 2;
                 }
@@ -135,15 +135,16 @@ public class Recrute {
         
          ArrayList<Offre> jobs= new ArrayList<Offre>();
         
-         jobs = getJobs("java",10);
+         jobs = getJobs("developpeur",10);
          
          HashMap<Integer,ArrayList<Integer>> preProc = new HashMap<Integer,ArrayList<Integer>>();
 
          int count = 0;
          for(Offre job : jobs){
-             if(count < 40){
+             //if(count < 80){
+                 try{
             final Document document = Jsoup.connect(job.link).get();
-            
+                 System.out.println(count);
             
             String g1 = document.select(".contentbloc > div").get(3).children().text();
             String g2 = document.select(".contentbloc > div").get(4).children().text();
@@ -170,14 +171,21 @@ public class Recrute {
              }
              
              count++;
+             
+             }catch(Exception e){
+                    e.printStackTrace();
+                    continue;
+                 }
             
             
          
-         } else{
-                 break;
-             }
+//         } else{
+//                 break;
+//             }
          
             }
+             
+         
          
          File csvFile = new File("javaDev.csv");
          PrintWriter out = new PrintWriter(csvFile);

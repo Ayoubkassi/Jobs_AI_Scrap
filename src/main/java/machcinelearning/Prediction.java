@@ -5,6 +5,7 @@
 package machcinelearning;
 
 import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.SMO;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
@@ -40,8 +41,11 @@ public class Prediction {
         
         //create and build the classifier
         
-        NaiveBayes nb = new NaiveBayes();
+//        NaiveBayes nb = new NaiveBayes();
+        SMO nb = new SMO();
         nb.buildClassifier(trainingDataset);
+
+        
         
         //load testDataset
         ConverterUtils.DataSource source1 =  new ConverterUtils.DataSource("/home/ryota/Desktop/data.arff");

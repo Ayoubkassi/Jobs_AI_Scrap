@@ -82,7 +82,7 @@ public class Scrap {
     public static void getLinks(String jobTitle, int n) throws IOException{
         String[] words = jobTitle.split(" ");
         int size = words.length;
-        String first_url = "https://www.rekrute.com/offres.html?s=1&p=1&o=1&query=software+engineer&keyword=software+engineer";
+        String first_url = "https://fr.indeed.com/jobs?q=";
         String med_url= "";
         for (int i = 0; i < size; i++) {
             if(i == size-1){
@@ -119,11 +119,7 @@ public class Scrap {
                  scr_num++;
                  if(scr_num == 28){
             for (DataNode node : element.dataNodes()) {
-                //System.out.println(node.getWholeData());
-                data = node.getWholeData();
-                
-                System.out.println(data);
-                
+                data = node.getWholeData();                               
                     }
                  
                  }
@@ -162,7 +158,6 @@ public class Scrap {
                  
                  String jk = job.substring(start_jk,end_jk);
                  String  job_link = "https://fr.indeed.com/viewjob?jk="+jk+"&tk="+ext_data+"&from=serp&vjs=3";
-                //System.out.println(job_link);
                  
                  
                  Job current_job = new Job(title,company,job_link);
@@ -174,7 +169,6 @@ public class Scrap {
                  
                          
                  
-                 //System.out.println(title);
                      }catch(Exception ex){
                          //System.out.println("Job is Empty");
                      }
@@ -182,32 +176,8 @@ public class Scrap {
                  }
                  start++;
              }
-             
-//            FileWriter fw = new FileWriter("job_data.txt");
-//
-//            
-//                    try{
-//               jobs.forEach(job ->{
-//                   //System.out.println(job.toString());
-//                    try{
-//                              fw.write(job.toString());
-//                              fw.write(System.getProperty("line.separator"));
-//                               fw.write(System.getProperty("line.separator"));
-//
-//                          }catch(IOException e){
-//                                //System.out.println("An error occurred.");
-//                              //e.printStackTrace();
-//                          }
-//               });
-//               }catch(Exception ex){
-//                   //ex.printStackTrace();
-//               }
-//        
-//                            fw.close();
-//             
 
-           
-             
+   
             }catch(Exception ex){
                 
             }
