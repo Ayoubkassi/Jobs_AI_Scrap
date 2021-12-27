@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -134,6 +135,8 @@ public class Recrute {
     public static void singleJob() throws IOException{
         
          ArrayList<Offre> jobs= new ArrayList<Offre>();
+         ArrayList<Offre> skills= new ArrayList<Offre>();
+
         
          jobs = getJobs("developpeur",10);
          
@@ -158,9 +161,23 @@ public class Recrute {
             System.out.println("*****************************");
             System.out.println(technologies.length);
             
+            
+            
              ArrayList<Integer> techs = new ArrayList<Integer>();
-             for (int i = 0; i < 45; i++) {
-                 if(g2.toLowerCase().contains(technologies[i])){
+             for (int i = 0; i <= 45; i++) {
+                 
+                 if(i == 45){
+                     //case accepted -> 6
+                     int occurences = Collections.frequency(techs, 1);
+                     if(occurences > 5){
+                         techs.add(6);
+                     }
+                     //rejected case -> 7
+                     else{
+                         techs.add(7);
+                     }
+                 }
+                 else if(g2.toLowerCase().contains(technologies[i]) && i != 45){
                      techs.add(1);
                      preProc.put(count, techs);
                 }
@@ -187,7 +204,7 @@ public class Recrute {
              
          
          
-         File csvFile = new File("javaDev.csv");
+         File csvFile = new File("completeData.csv");
          PrintWriter out = new PrintWriter(csvFile);
          
 
@@ -199,9 +216,9 @@ public class Recrute {
         System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
         ArrayList<Integer> data = new ArrayList<Integer>();
         data = entry.getValue();
-        
-            out.printf("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n", 
-             data.get(0), data.get(1), data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7), data.get(8), data.get(9), data.get(10), data.get(11), data.get(12), data.get(13), data.get(14), data.get(15), data.get(16), data.get(17), data.get(18), data.get(19), data.get(20), data.get(21), data.get(22), data.get(23), data.get(24), data.get(25), data.get(26), data.get(27), data.get(28), data.get(29), data.get(30), data.get(31), data.get(32), data.get(33), data.get(34), data.get(35), data.get(36), data.get(37), data.get(38), data.get(39), data.get(40), data.get(41), data.get(42), data.get(43), data.get(44));
+        String state = data.get(45) == 6 ? "ACCEPTED" : "REJECTED" ;
+            out.printf("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s\n", 
+             data.get(0), data.get(1), data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7), data.get(8), data.get(9), data.get(10), data.get(11), data.get(12), data.get(13), data.get(14), data.get(15), data.get(16), data.get(17), data.get(18), data.get(19), data.get(20), data.get(21), data.get(22), data.get(23), data.get(24), data.get(25), data.get(26), data.get(27), data.get(28), data.get(29), data.get(30), data.get(31), data.get(32), data.get(33), data.get(34), data.get(35), data.get(36), data.get(37), data.get(38), data.get(39), data.get(40), data.get(41), data.get(42), data.get(43), data.get(44),state);
 
     }
     
