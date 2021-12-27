@@ -74,6 +74,7 @@ public class Recrute {
                 url.setCharAt(42,'1');
                 //url.setCharAt(43,'0');
                 url.append('0');
+                System.out.println(foi);
             }else{
                 System.out.println(k);
                 char c = s.charAt(k);
@@ -104,11 +105,17 @@ public class Recrute {
                         Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo,link);
                         jobs.add(offre);
                         
+                        
+                        
                    }catch(Exception e){
                           e.printStackTrace();
                    }
                    
+                 
+                   
             }
+                
+                
         }
         
         }
@@ -134,7 +141,17 @@ public class Recrute {
 //             
 //             fw.close();
 //        
+                FileWriter fw = new FileWriter("forUser.txt");
 
+             for(Offre job : jobs){
+                 System.out.println(job.toString());
+                 fw.write(job.toString());
+                 fw.write(System.getProperty("line.separator"));
+                 
+
+             }
+             
+             fw.close();
         return jobs;
         
         

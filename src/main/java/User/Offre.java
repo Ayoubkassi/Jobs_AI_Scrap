@@ -57,9 +57,10 @@ public class Offre {
 
     @Override
     public String toString() {
-        return "Offre{" + "id=" + id + ", title=" + title + ", requirements=" + requirements + ", companyInfo=" + companyInfo + ", description=" + description + ", date=" + date + ", additionalInfo=" + additionalInfo + '}';
+        return "Offre{" + "id=" + id + ", title=" + title + ", requirements=" + requirements + ", companyInfo=" + companyInfo + ", description=" + description + ", date=" + date + ", additionalInfo=" + additionalInfo + ", link=" + link + '}';
     }
 
+    
     
     
     public int getId() {
