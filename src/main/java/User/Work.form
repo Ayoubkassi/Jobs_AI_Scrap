@@ -96,7 +96,7 @@
             <Component class="javax.swing.JTable" name="tblJobs">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="true" title="Id" type="java.lang.Object"/>
                     <Column editable="true" title="Title" type="java.lang.Object"/>
                     <Column editable="true" title="Company" type="java.lang.Object"/>
@@ -127,7 +127,12 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>

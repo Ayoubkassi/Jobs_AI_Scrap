@@ -52,16 +52,14 @@ public class Work extends javax.swing.JFrame {
 
         tblJobs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Id", "Title", "Company", "Link"
             }
         ));
-        tblJobs.setColumnSelectionAllowed(true);
+        tblJobs.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblJobs.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblJobs.setUpdateSelectionOnSort(false);
         jScrollPane1.setViewportView(tblJobs);
 
