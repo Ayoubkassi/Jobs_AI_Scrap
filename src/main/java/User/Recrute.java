@@ -100,11 +100,13 @@ public class Recrute {
                         String infoCompany = infos.get(0).select("span").get(1).text();                 
                         String description = infos.get(0).select("span").get(2).text(); 
                         
+                        String image = scriptElements.get(j).select("div > div > a > img").attr("src");
+                        
                         String date = infos.get(0).select("em").text();                               
                         String additionalInfo = infos.get(0).select("ul").text();
-                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo,link);
+                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo,image,link);
                         jobs.add(offre);
-                        
+                        System.out.println(image);
                         
                         
                    }catch(Exception e){
@@ -125,21 +127,6 @@ public class Recrute {
             
             
 
-
-//        
-//              FileWriter fw = new FileWriter("recrutesfrontend2.txt");
-//         
-//
-////           
-//           
-//             for(Offre of : jobs){
-//                 System.out.println(of.toString());
-//                 fw.write(of.toString());
-//                 fw.write(System.getProperty("line.separator"));
-//                 
-//             }
-//             
-//             fw.close();
 //        
                 FileWriter fw = new FileWriter("forUser.txt");
 
@@ -158,6 +145,24 @@ public class Recrute {
         
         
         
+    }
+    
+    
+    
+    public static void toJSON() throws IOException{
+            ArrayList<Offre> jobs= new ArrayList<Offre>();
+            jobs = getJobs("developpeur",10);
+            
+            File csvFile = new File("json.csv");
+            PrintWriter out = new PrintWriter(csvFile);
+            int id = 0;
+            for (Offre job : jobs) {
+            out.printf("%d, %s, %s, %s, %s, %s, %s, %s, %s\n", id++
+            ,job.title,job.description,job.companyInfo,job.date,job.image,job.link,job.requirements,job.additionalInfo);
+
+    }
+    
+     out.close();
     }
     
     
@@ -263,7 +268,10 @@ public class Recrute {
     public static void main(String[] args) throws IOException{
         System.out.println("Bismi Allah");
         
-        singleJob();
+        ArrayList<Offre> jobs= new ArrayList<Offre>();
+
+        toJSON();
+        //singleJob();
         //singleJob("https://www.rekrute.com/offre-emploi-responsable-administration-du-personnel-et-affaires-juridiques-recrutement-orh-assessment-casablanca-132525.html");
     }
     

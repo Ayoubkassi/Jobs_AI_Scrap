@@ -17,6 +17,7 @@ public class Offre {
     String date ;
     String  additionalInfo;
     String link;
+    String image;
 
     public Offre() {
     }
@@ -53,6 +54,21 @@ public class Offre {
         this.description = description;
         this.date = date;
         this.additionalInfo = additionalInfo;
+    }
+    
+    
+    //with image and link
+    
+      public Offre(String title, String requirements, String companyInfo, String description, String date, String additionalInfo, String image , String link) {
+        this.title = title;
+        this.requirements = requirements;
+        this.companyInfo = companyInfo;
+        this.description = description;
+        this.date = date;
+        this.additionalInfo = additionalInfo;
+        this.image = image;
+        this.link = link;
+
     }
 
     @Override
@@ -126,6 +142,16 @@ public class Offre {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    
     
     
     

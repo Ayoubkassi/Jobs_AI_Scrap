@@ -14,7 +14,7 @@ import weka.core.converters.ConverterUtils;
  */
 public class ClassificationJ48 {
     public static void main(String[] args) throws Exception{
-        ConverterUtils.DataSource source =  new ConverterUtils.DataSource("/home/ryota/Desktop/new1.arff");
+        ConverterUtils.DataSource source =  new ConverterUtils.DataSource("expliciteData.arff");
         Instances dataset = source.getDataSet();
         
         //specifiy the class attribute

@@ -46,7 +46,7 @@ public class LoadData {
     
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception{
         
-        DataSource source =  new DataSource("/home/ryota/Desktop/data.arff");
+        DataSource source =  new DataSource("old_data/tkhalt.arff");
         Instances dataset = source.getDataSet();
 //        //Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/data.arff")));
 //        
@@ -54,7 +54,7 @@ public class LoadData {
 //        
         ArffSaver saver = new ArffSaver();
         saver.setInstances(dataset);
-        saver.setFile(new File("/home/ryota/Desktop/dataset.arff"));
+        saver.setFile(new File("expliciteData.arff"));
         saver.writeBatch();
 //        
 //        //classifing
