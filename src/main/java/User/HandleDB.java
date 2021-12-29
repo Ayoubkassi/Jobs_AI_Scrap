@@ -18,13 +18,19 @@ import java.util.logging.Logger;
  * @author ryota
  */
 public class HandleDB {
+
+    public HandleDB() {
+    }
+    
+    
+    
      //connection avec la base de donne
     public static Statement connectToDB() throws ClassNotFoundException, SQLException{
         
         Connection connect = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        String url = "jdbc:mysql://localhost:3306/TD3";
+        String url = "jdbc:mysql://localhost:3306/JobsScraper";
         String user = "root";
         String password = "guillaume";
         
@@ -45,8 +51,64 @@ public class HandleDB {
     
     
     
+    public static ArrayList<User> getUsers(){
+          ArrayList<User> users = new ArrayList<User>();
+          
+           try{
+        Statement st = connectToDB();
+        String sql = "select * from user";
+        ResultSet rs = st.executeQuery(sql);
+        while(rs.next()){
+            String username = rs.getString("username");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String secteur = rs.getString("secteur");
+            
+            User user = new User(email,username,password,secteur);
+            users.add(user);
+        }
+        
+        }catch(ClassNotFoundException | SQLException ex){
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+          return users;
+    }
+    
+    public static boolean isUserInDB( String email){
+        boolean exist = false;
+        ArrayList<User> users = getUsers();
+        for(User user : users){
+            if(user.email.equals(email)){
+                exist = true;
+            }
+        }
+        
+        return exist;
+        
+    }
+    
+    
+    public static void addUser(User user){
+          try{
+            Statement st = connectToDB();
+           
+                String requette = "INSERT INTO `user`(`username`, `password`, `email`,`secteur`) "
+                        + "VALUES ('" + user.username + "','" + user.pasword + "','" +user.email + "','" + user.secteur + "')";
+                st.execute(requette);
+                System.out.println("User added");
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+    } 
+ 
+ }
+
     //trouver etudiant avce Id
     public static Offre selectJobById(int id) throws ClassNotFoundException, SQLException{
+        
+        
+        
         Offre job = null;
         Statement st = connectToDB();
         String sql = "select * from Jobs where id='" + id + "'";

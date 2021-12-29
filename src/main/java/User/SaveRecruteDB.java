@@ -66,7 +66,7 @@ public class SaveRecruteDB {
             st.execute(sql);
             
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SaveRecruteDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 //           
 

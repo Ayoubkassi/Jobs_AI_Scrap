@@ -143,7 +143,7 @@ public class Work extends javax.swing.JFrame {
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Crud.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Work.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public static void main(String args[]) {

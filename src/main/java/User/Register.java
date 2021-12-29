@@ -4,6 +4,11 @@
  */
 package User;
 
+import static User.HandleDB.addUser;
+import static User.HandleDB.isUserInDB;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author ryota
@@ -13,6 +18,8 @@ public class Register extends javax.swing.JFrame {
     /**
      * Creates new form Register
      */
+    
+    
     public Register() {
         initComponents();
     }
@@ -104,6 +111,11 @@ public class Register extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REGISTER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,9 +190,45 @@ public class Register extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //register new User
+        //first check if a user is already exists
+        String Password = password.getText();
+        String Email = email.getText();
+        String Secteur = secteur.getText();
+        String Username = username.getText();
+        if(isUserInDB(email.getText())){
+            alert("Sorry already User Exist with those inofs");
+        }else{
+            if(Password.equals("") || Email.equals("") || Username.equals("") || Secteur.equals("")){
+                alert("Infomations None complete");
+                
+                
+                
+            }else{
+                //add User
+                User newUser = new User(Email,Username,Password,Secteur);
+                addUser(newUser);
+                //switch screen to login
+                
+                Basic cp = null;
+                cp = new Basic();                    
+                cp.setVisible(true);
+                this.setVisible(false);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    public void alert(String msg) {
+        JOptionPane.showMessageDialog(rootPane, msg);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

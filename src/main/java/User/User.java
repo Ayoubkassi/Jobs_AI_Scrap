@@ -9,37 +9,61 @@ package User;
  * @author ryota
  */
 public class User {
-     String fname,lname,id,filiere,annee;
-    public User(String fname,String lname,String id,String annee, String filiere){
-        this.fname = fname;
-        this.lname = lname;
-        this.id = id;
-        this.annee = annee;
-        this.filiere = filiere;
-        
+    String email;
+    String username;
+    String pasword;
+    String secteur;
+
+    //parameterize constructor 
+    public User(String email, String username, String pasword, String secteur) {
+        this.email = email;
+        this.username = username;
+        this.pasword = pasword;
+        this.secteur = secteur;
+    }
+    
+    //setters and getters
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return pasword;
+    }
+
+    public void setPasword(String pasword) {
+        this.pasword = pasword;
+    }
+
+    public String getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(String secteur) {
+        this.secteur = secteur;
     }
 
     @Override
     public String toString() {
-        return "User{" + "fname=" + fname + ", lname=" + lname + ", id=" + id + ", filiere=" + filiere + ", annee=" + annee + '}';
+        return "User{" + "email=" + email + ", username=" + username + ", pasword=" + pasword + ", secteur=" + secteur + '}';
+    }
+    
+    public void affiche(){
+        System.out.println(this.toString());
     }
     
     
-    
-    //getters
-    public String getLname(){
-        return this.lname;
-    }
-    public String getFname(){
-        return this.fname;
-    }
-    public String getId(){
-        return this.id;
-    }
-    public String getFiliere(){
-        return this.filiere;
-    }
-    public String getAnnee(){
-        return this.annee;
-    }
 }

@@ -21,7 +21,7 @@ public class AdminsDB {
         Statement statement = null;
        // PreparedStatement preparedstatement = null;
         ResultSet resultSet = null;
-        String url = "jdbc:mysql://localhost:3306/java";
+        String url = "jdbc:mysql://localhost:3306/JobsScraper";
         String user = "root";
         String password = "guillaume";
         
@@ -71,3 +71,19 @@ public class AdminsDB {
         
     }
 }
+
+
+//CREATE TABLE admins(
+//    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+//    username VARCHAR(100),
+//    password VARCHAR(100)
+//);
+
+
+//CREATE TABLE user(
+//    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+//    username VARCHAR(100),
+//    password VARCHAR(100),
+//    email VARCHAR(100),
+//    secteur VARCHAR(100)
+//);

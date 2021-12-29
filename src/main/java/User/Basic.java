@@ -4,6 +4,7 @@
  */
 package User;
 
+import static User.HandleDB.getUsers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -170,8 +171,10 @@ public class Basic extends javax.swing.JFrame {
         
         ArrayList<Admins> admins = AdminsDB.getAdmins();
         HashMap<String,String> map = new HashMap<String,String>();
+        ArrayList<User> users = getUsers();
             
-            for(Admins a:admins){
+        //login for users
+            for(User a: users){
                 map.put(a.getUsername(),a.getPassword());
             }
             
