@@ -152,6 +152,9 @@ public class Offre {
     }
     
     
+    public void affiche(){
+        System.out.println(this.toString());      
+    }
     
     
     
