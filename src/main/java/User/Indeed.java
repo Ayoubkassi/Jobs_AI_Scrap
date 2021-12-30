@@ -139,7 +139,7 @@ public class Indeed {
                     int start_jk = job.indexOf("{")+5;
                     int end_jk = job.indexOf("efccid")-2;                
                     String jk = job.substring(start_jk,end_jk);
-                    String  job_link = "https://fr.indeed.com/viewjob?jk="+jk+"&tk="+ext_data+"&from=serp&vjs=3";
+                    String  job_link = "https://indeed.com/viewjob?jk="+jk+"&tk="+ext_data+"&from=serp&vjs=3";
                     int indexVille = job.indexOf(",city:'");
                     int endVille = job.indexOf("',title:");
                     String ville = job.substring(indexVille+7,endVille);
