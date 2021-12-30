@@ -9,6 +9,8 @@ package User;
  * @author ryota
  */
 
+import static User.HandleDB.addJob;
+import static User.Recrute.getJobsGen;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -66,10 +68,20 @@ public class Indeed {
     
     
     
-    public static void getLinks(String jobTitle, int n, String country , String type , String date) throws IOException{
+    public static ArrayList<EmploiJob> getLinks(String jobTitle, int n, String country , String type , String date) throws IOException{
+        String cnt = "";
+        String initialDate = date;
+
+        if(country.equals("germany")){
+            cnt = "de.";
+        }else if(country.equals("morocco")){
+            cnt = "ma.";
+        }else if (country.equals("france")){
+            cnt = "fr.";
+        }
         String[] words = jobTitle.split(" ");
         int size = words.length;
-        String first_url = "https://fr.indeed.com/jobs?q=";
+        String first_url = "https://"+cnt+"indeed.com/jobs?q=";
         String med_url= "";
         for (int i = 0; i < size; i++) {
             if(i == size-1){
@@ -82,10 +94,12 @@ public class Indeed {
         
         String base_url = first_url+med_url ;
         ArrayList<Job> jobs = new ArrayList<Job>();
- 
+        ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
+        
         for (int i = 10; i <= n*10; i+=10){
-            final String url = base_url+"&start="+i;
+            final String url = base_url+"&start="+i+"&jt="+type+"&fromage="+date;
 
+            System.out.println(url);
             final Document document = Jsoup.connect(url).get();
             Elements scriptElements = document.getElementsByTag("script");
             
@@ -95,9 +109,9 @@ public class Indeed {
             try{
              for (Element element :scriptElements ){
                  scr_num++;
-                 if(scr_num == 28){
+                 if(scr_num == 25){
             for (DataNode node : element.dataNodes()) {
-                data = node.getWholeData();                               
+                data = node.getWholeData(); 
                     }
                  
                  }
@@ -129,22 +143,25 @@ public class Indeed {
                     int indexVille = job.indexOf(",city:'");
                     int endVille = job.indexOf("',title:");
                     String ville = job.substring(indexVille+7,endVille);
-                 
+                    System.out.println(job_link);
                     
                     
-                    Job current_job = new Job(title,company,job_link);                 
-                    jobs.add(current_job);
+                    //Job current_job = new Job(title,company,job_link);                 
+                    //jobs.add(current_job);
                     
                     //each single job
-                    
+                    date = initialDate;
+                    try{
                     Document single = Jsoup.connect(job_link).get();
                     Element body= single.select("body").get(0);
                     Elements  div = body.select("div.jobsearch-JobComponent-description");           
                     String job_description = div.text().toLowerCase();
                     int experienceIndex = job_description.indexOf("d’expérience");
                     String experience = "";
-                    experience = job_description.substring(experienceIndex -15,experienceIndex);
-                    
+                    boolean expexist = job_description.contains("d’expérience");
+                    if(expexist){
+                    experience = job_description.substring(experienceIndex -13,experienceIndex);
+                    }
                     //requirements 
                     
                     ArrayList<Integer> requirements = new ArrayList<Integer>();
@@ -152,10 +169,9 @@ public class Indeed {
                         String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
                 ,"php","flutter","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
                 "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
-                System.out.println("*****************************");
             
-                        for (int j = 0; j < technologies.length; j++) {
-                            if(job_description.toLowerCase().contains(technologies[j])){
+                        for (int k = 0; k < technologies.length; k++) {
+                            if(job_description.contains(technologies[k])){
                                 requirements.add(1);
                             }
                             else{
@@ -168,8 +184,17 @@ public class Indeed {
                             req+=id+" ";
                         }
                         
-                        
+                        date = "last" + initialDate + "days";
                         //save Emploi and add Array
+                        EmploiJob offre = new EmploiJob(title,type,experience,ville,req,"1",job_link,date);
+                        System.out.println(offre.toString());
+                        offres.add(offre);
+                        offre.affiche();
+                        
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        continue;
+                    }
                     
                     
                      }catch(Exception ex){
@@ -183,7 +208,9 @@ public class Indeed {
    
             }catch(Exception ex){
                 
-            } 
+            }
+            
+            
         }
         
             
@@ -198,13 +225,26 @@ public class Indeed {
 //             }
 //             
 //             fw.close();
+
+            return offres;
     }
     
     
   
-    public static void main(String[] args) throws IOException{
-        System.out.println("Hey we start");
-        getLinks("frontend developer",1,"france","stage","2021");
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException{
+        System.out.println("Bismi Allah");
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
+        
+        //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
+        try{
+        jobs = getLinks("software engineer",10,"","fulltime","7");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        for(EmploiJob job : jobs){
+            addJob(job,"Informatique","Indeed");
+        }
         //singleJob("https://fr.indeed.com/voir-emploi?jk=1f985058e4f47e10&tk=1fm2prn1ir8bl800&from=serp&vjs=3");
     }   
 }

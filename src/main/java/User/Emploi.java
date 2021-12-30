@@ -35,7 +35,6 @@ public class Emploi {
                     
                     String title = row.select("h5 > a").text();
                     String link ="https://www.emploi.ma" + row.select("h5 > a").attr("href");
-                    System.out.println(title);
                     //scrap into each link alone
                     try{
                     Document offre = Jsoup.connect(link).get();
@@ -105,9 +104,7 @@ public class Emploi {
             
         }
         
-        for(EmploiJob job : jobs){
-            job.affiche();
-        }
+        
         return jobs;
     }
     
