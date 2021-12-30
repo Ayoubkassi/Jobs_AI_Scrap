@@ -96,13 +96,13 @@ public class Indeed {
         ArrayList<Job> jobs = new ArrayList<Job>();
         ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         
-        for (int i = 10; i <= n*10; i+=10){
+        for (int i = 310; i <= n*10; i+=10){
             final String url = base_url+"&start="+i+"&jt="+type+"&fromage="+date;
 
             System.out.println(url);
             final Document document = Jsoup.connect(url).get();
             Elements scriptElements = document.getElementsByTag("script");
-            
+            System.out.println(document);
             int scr_num=0;
             String data= "";
             
@@ -144,7 +144,7 @@ public class Indeed {
                     int endVille = job.indexOf("',title:");
                     String ville = job.substring(indexVille+7,endVille);
                     System.out.println(job_link);
-                    
+                         System.out.println(job_link);
                     
                     //Job current_job = new Job(title,company,job_link);                 
                     //jobs.add(current_job);
@@ -237,7 +237,7 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = getLinks("software engineer",10,"","fulltime","7");
+        jobs = getLinks("software engineer",50,"","fulltime","14");
         }catch(Exception e){
             e.printStackTrace();
         }

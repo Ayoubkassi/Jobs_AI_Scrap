@@ -162,7 +162,7 @@ public class HandleDB {
         
         try{
             Statement st = connectToDB();
-            String sql = "select * from Jobs where title='" + job.title + "'and date ='" +job.date + "'";
+            String sql = "select * from Jobs where title='" + job.title + "'and site ='" +site + " limit = 1'";
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.first()){
