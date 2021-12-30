@@ -4,6 +4,7 @@
  */
 package User;
 
+import static User.HandleDB.fetchJobsParams;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,15 +24,19 @@ public class Work extends javax.swing.JFrame {
     /**
      * Creates new form Work
      */
+    ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
+
     public Work() {
         initComponents();
         fetch();
     }
     
     //this is the constructor that we gonna be working with
-    public Work(String domaine, String type,String country, String date,boolean indeed,boolean rekrute , boolean emploi) {
+    public Work(String domaine, String type,String country,String indeed,String rekrute , String emploi) {
         initComponents();
-        fetch();
+        offres = fetchJobsParams(domaine,type,country,indeed,rekrute,emploi);
+        
+        updateTable();
     }
 
     /**
@@ -120,17 +125,27 @@ public class Work extends javax.swing.JFrame {
      */
     
         ArrayList<Job> jobs = new ArrayList<Job>();
-        ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
 
         Connection con;
         Statement st;
     
         
-        private void fetchWithParams(){
-            offres.clear();
+        private void updateTable(){
             try{
                 //get rows that i need with HandleDB
-                
+                int id =0;
+                DefaultTableModel model = (DefaultTableModel) tblJobs.getModel();
+
+                for(EmploiJob job : offres){
+                    
+                    Object[] row = new Object[4];
+                    row[0] = ++id;
+                    row[1] = job.getTitle();
+                    row[2] = job.getTypeContart();
+                    row[3] = job.getVille();
+
+                    model.addRow(row);
+                }
                 
             }catch(Exception ex){
               ex.printStackTrace();
