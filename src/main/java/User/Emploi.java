@@ -114,7 +114,7 @@ public class Emploi {
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException{
         ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
         
-        jobs = getJobs("",1);
+        jobs = getJobs("",20);
         
         for(EmploiJob job : jobs){
             addJob(job,"Informatique","Emploi");
