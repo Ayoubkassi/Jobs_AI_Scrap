@@ -97,7 +97,7 @@ public class Intermed extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(140, 43, 224));
-        jLabel4.setText("Domaine : ");
+        jLabel4.setText("Mots-cles : ");
 
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
