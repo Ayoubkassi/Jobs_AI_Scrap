@@ -226,23 +226,23 @@ public class HandleDB {
     
     //methode additionel pour afficher toutes les Offres
     
-    public static void fetchJobs(){
+    public static ArrayList<EmploiJob>  fetchJobs(){
         
-        ArrayList<Offre> jobs = new ArrayList<Offre>();
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
         
         try{
             Statement st = connectToDB();
             String sql = "select * from Jobs ";
             ResultSet rs = st.executeQuery(sql);
              while (rs.next()) {
-                Offre job = new Offre(rs.getString("title"), rs.getString("requirements"), rs.getString("company"),rs.getString("description"),rs.getString("link"),rs.getString("date"));
+                EmploiJob job = new EmploiJob(rs.getString("title"), rs.getString("typeContrat"), rs.getString("experience"),rs.getString("ville"),rs.getString("requirements"),rs.getString("nbPoste"),rs.getString("link"),rs.getString("date"));
                 jobs.add(job);
-                job.affiche();
             }
         }catch(ClassNotFoundException | SQLException ex){
             Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        return jobs;
     }
     
     //methode additionel pour afficher toutes les etudiant
@@ -321,4 +321,7 @@ public class HandleDB {
          }
         return id;
     }
+    
+    
+   
 }
