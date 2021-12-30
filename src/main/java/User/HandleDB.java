@@ -158,11 +158,11 @@ public class HandleDB {
         return job;
     }
     
-    public static void addJob(Offre job , String domaine) throws SQLException, ClassNotFoundException{
+    public static void addJob(EmploiJob job , String domaine , String site) throws SQLException, ClassNotFoundException{
         
         try{
             Statement st = connectToDB();
-            String sql = "select * from Jobs where title='" + job.title + "'and company ='" +job.companyInfo + "'";
+            String sql = "select * from Jobs where title='" + job.title + "'and date ='" +job.date + "'";
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.first()){
@@ -170,9 +170,10 @@ public class HandleDB {
                 System.out.println("Sorry deja cette Offre existe avec le meme title et company");
             }else{
 
-                String requette = "INSERT INTO `Offre`(`title`, `company`, `domaine`,`date`) "
-                        + "VALUES ('" + job.title + "','" + job.companyInfo + "','" +domaine + "','" + job.date + "')";
+                String requette = "INSERT INTO `Jobs`(`title`, `typeContrat`, `experience`,`ville`,`requirements`,`nbPoste`,`link`,`date`,`site`,`domaine`) "
+                        + "VALUES ('" + job.title + "','" + job.typeContart + "','" +job.experience + "','" +job.ville + "','" +job.requirements + "','" +job.nbPoste + "','" +job.link + "','" + job.date + "','"+ site +  "','"  + domaine + "')";
                 st.execute(requette);
+                System.out.println("added");
         }
         }catch(ClassNotFoundException | SQLException ex){
             Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);

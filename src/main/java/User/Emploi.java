@@ -4,7 +4,9 @@
  */
 package User;
 
+import static User.HandleDB.addJob;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,21 +44,47 @@ public class Emploi {
                     
                     Elements infos = offre.select("div.container-page-content");
                     Elements info = infos.select("table.job-ad-criteria > tbody");
-                    
+                    String contrat = "";
+                    String experience ="";
+                    String ville = "";
+                    String nbPoste = "";
                         for(Element ele : info){
                             Elements single = ele.select("tr > td");
-                            String contrat = single.get(5).text();
-                            String experience = single.get(11).text();
-                            String ville = single.get(9).text();
-                            String nbPoste = single.get(17).text();
+                            contrat = single.get(5).text();
+                            experience = single.get(11).text();
+                            ville = single.get(9).text();
+                            nbPoste = single.get(17).text();
                             
                         }
                         
-                    Elements Descriptions =offre.select("div.content.clearfix ");
-                    Element Description = Descriptions.select("ul").first();
-                        System.out.println(Description);
-                        System.out.println("*************************************");
+                        ArrayList<Integer> requirements = new ArrayList<Integer>();
+                        
+                    String Descriptions =offre.select("div.content.clearfix").get(1).text();
+                    String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
+            ,"php","flutter","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
+            "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
+            System.out.println("*****************************");
+            
+                        for (int j = 0; j < technologies.length; j++) {
+                            if(Descriptions.toLowerCase().contains(technologies[j])){
+                                requirements.add(1);
+                            }
+                            else{
+                                requirements.add(0);
+                            }
+                        }
+                        
+                        String req ="";
+                        for(int id : requirements){
+                            req+=id+" ";
+                        }
+            
                     
+//                        System.out.println(Descriptions);
+//                        System.out.println("************************");
+
+                    EmploiJob job = new EmploiJob(title,contrat,experience,ville,req,nbPoste,link,date);
+                    jobs.add(job);
 //                    
                     }catch(Exception e){
                         e.printStackTrace();
@@ -75,11 +103,21 @@ public class Emploi {
     
             
         }
+        
+        for(EmploiJob job : jobs){
+            job.affiche();
+        }
         return jobs;
     }
     
     
-    public static void main(String[] args) throws IOException{
-        getJobs("a",1);
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException{
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
+        
+        jobs = getJobs("",1);
+        
+        for(EmploiJob job : jobs){
+            addJob(job,"Informatique","Emploi");
+        }
     }
 }

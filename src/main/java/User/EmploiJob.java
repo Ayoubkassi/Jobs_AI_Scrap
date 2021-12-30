@@ -4,6 +4,8 @@
  */
 package User;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ryota
@@ -17,6 +19,19 @@ public class EmploiJob {
     String nbPoste;
     String link;
     String date;
+    
+    
+//    CREATE TABLE Jobs(
+//            id INT(11) PRIMARY KEY AUTO_INCREMENT,
+//            title VARCHAR(100),
+//            typeContrat VARCHAR(100),
+//            experience VARCHAR(100),
+//            ville VARCHAR(100),
+//            requirements VARCHAR(100),
+//            nbPoste VARCHAR(100),
+//            link VARCHAR(100),
+//            date VARCHAR(100),
+//    );
 
     public EmploiJob() {
     }
@@ -31,6 +46,8 @@ public class EmploiJob {
         this.link = link;
         this.date = date;
     }
+
+    
 
     public String getTitle() {
         return title;
@@ -64,13 +81,7 @@ public class EmploiJob {
         this.ville = ville;
     }
 
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
-    }
+   
 
     public String getNbPoste() {
         return nbPoste;
@@ -95,6 +106,16 @@ public class EmploiJob {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+    
+    
 
     @Override
     public String toString() {
