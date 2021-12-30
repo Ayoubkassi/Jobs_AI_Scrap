@@ -4,6 +4,7 @@
  */
 package User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +16,9 @@ import org.jsoup.select.Elements;
  * @author ryota
  */
 public class Emploi {
-    public static void getJobs(String secteur, int nbPages){
+    public static ArrayList<EmploiJob> getJobs(String secteur, int nbPages) throws IOException{
+        
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
         String first_url = "https://www.emploi.ma/recherche-jobs-maroc?f%5B0%5D=im_field_offre_metiers%3A31&page=";
         
         for (int i = 1; i <= nbPages; i++) {
@@ -31,20 +34,36 @@ public class Emploi {
                     String link ="https://www.emploi.ma" + row.select("h5 > a").attr("href");
                     
                     //scrap into each link alone
+                    try{
+                    Document offre = Jsoup.connect(link).get();
+                    Elements header = offre.select("div.block-header");
                     
+                    String date = header.select("div.job-ad-publication-date").text().substring(11);
+                        System.out.println(date);
+
+//                    
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        continue;
+                    }
+//                    
                 }
-                
+//                
                 
             }catch(Exception e){
                 e.printStackTrace();
             }
-        }
+        
         
 
+    
+            
+        }
+        return jobs;
     }
     
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         getJobs("a",1);
     }
 }
