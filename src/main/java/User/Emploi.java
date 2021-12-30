@@ -5,6 +5,7 @@
 package User;
 
 import static User.HandleDB.addJob;
+import static User.HandleDB.fetchJobsParams;
 import static User.Recrute.getJobsGen;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -114,10 +115,16 @@ public class Emploi {
         
         //jobs = getJobs("",20);
         
-        jobs = getJobsGen("developpeur",10);
-        
-        for(EmploiJob job : jobs){
-            addJob(job,"Informatique","Rekrute");
+//        jobs = getJobsGen("developpeur",10);
+//        
+//        for(EmploiJob job : jobs){
+//            addJob(job,"Informatique","Rekrute");
+//        }
+
+        jobs = fetchJobsParams("Informatique","CDI","","Indeed","Rekrute","");
+        int i =0;
+        for(EmploiJob emp : jobs){
+            System.out.println(++i);
         }
     }
 }

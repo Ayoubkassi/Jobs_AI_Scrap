@@ -199,7 +199,32 @@ public class HandleDB {
         
     }
     
-    //methode additionel pour afficher toutes les etudiant
+    //afficher toutes les offres de avec parametre
+    
+    public static ArrayList<EmploiJob> fetchJobsParams(String domaine, String type, String country,String first, String second, String third){
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
+        
+        //i will code it as binary 000 -> means no one , or 111->7 means all of them
+        System.out.println("begin");
+        try{
+            Statement st = connectToDB();
+            String sql = "SELECT * FROM `Jobs` WHERE domaine = '"+ domaine + "' and typeContrat= '"+type+"' and country = '"+country+"' and site in ('"+first+"','"+second+"','"+third+"')";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                EmploiJob job = new EmploiJob(rs.getString("title"), rs.getString("typeContrat"), rs.getString("experience"),rs.getString("ville"),rs.getString("requirements"),rs.getString("nbPoste"),rs.getString("link"),rs.getString("date"));
+                jobs.add(job);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println("probleem");
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        
+        return jobs;
+    }
+    
+    
+    //methode additionel pour afficher toutes les Offres
     
     public static void fetchJobs(){
         

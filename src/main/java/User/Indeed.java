@@ -245,6 +245,8 @@ public class Indeed {
         for(EmploiJob job : jobs){
             addJob(job,"Informatique","Indeed");
         }
+        //after saving into our db we must execute : update Jobs set typeContrat="CDI" where typeContrat="fulltime";
+        
         //singleJob("https://fr.indeed.com/voir-emploi?jk=1f985058e4f47e10&tk=1fm2prn1ir8bl800&from=serp&vjs=3");
     }   
 }

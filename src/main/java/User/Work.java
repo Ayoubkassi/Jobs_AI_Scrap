@@ -27,6 +27,12 @@ public class Work extends javax.swing.JFrame {
         initComponents();
         fetch();
     }
+    
+    //this is the constructor that we gonna be working with
+    public Work(String domaine, String type,String country, String date,boolean indeed,boolean rekrute , boolean emploi) {
+        initComponents();
+        fetch();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,9 +120,23 @@ public class Work extends javax.swing.JFrame {
      */
     
         ArrayList<Job> jobs = new ArrayList<Job>();
+        ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
+
         Connection con;
         Statement st;
     
+        
+        private void fetchWithParams(){
+            offres.clear();
+            try{
+                //get rows that i need with HandleDB
+                
+                
+            }catch(Exception ex){
+              ex.printStackTrace();
+            }
+        }
+        
        private void fetch() {
        jobs.clear();
        
