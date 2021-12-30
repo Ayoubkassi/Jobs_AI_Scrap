@@ -32,15 +32,31 @@ public class Emploi {
                     
                     String title = row.select("h5 > a").text();
                     String link ="https://www.emploi.ma" + row.select("h5 > a").attr("href");
-                    
+                    System.out.println(title);
                     //scrap into each link alone
                     try{
                     Document offre = Jsoup.connect(link).get();
                     Elements header = offre.select("div.block-header");
                     
                     String date = header.select("div.job-ad-publication-date").text().substring(11);
-                        System.out.println(date);
-
+                    
+                    Elements infos = offre.select("div.container-page-content");
+                    Elements info = infos.select("table.job-ad-criteria > tbody");
+                    
+                        for(Element ele : info){
+                            Elements single = ele.select("tr > td");
+                            String contrat = single.get(5).text();
+                            String experience = single.get(11).text();
+                            String ville = single.get(9).text();
+                            String nbPoste = single.get(17).text();
+                            
+                        }
+                        
+                    Elements Descriptions =offre.select("div.content.clearfix ");
+                    Element Description = Descriptions.select("ul").first();
+                        System.out.println(Description);
+                        System.out.println("*************************************");
+                    
 //                    
                     }catch(Exception e){
                         e.printStackTrace();
