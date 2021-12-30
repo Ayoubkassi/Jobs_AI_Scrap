@@ -5,6 +5,7 @@
 package User;
 
 import static User.HandleDB.addJob;
+import static User.Recrute.getJobsGen;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -114,10 +115,12 @@ public class Emploi {
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException{
         ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
         
-        jobs = getJobs("",20);
+        //jobs = getJobs("",20);
+        
+        jobs = getJobsGen("developpeur",10);
         
         for(EmploiJob job : jobs){
-            addJob(job,"Informatique","Emploi");
+            addJob(job,"Informatique","Rekrute");
         }
     }
 }
