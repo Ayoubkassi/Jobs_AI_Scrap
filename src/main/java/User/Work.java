@@ -47,9 +47,12 @@ public class Work extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(140, 43, 224));
         jLabel1.setText("JOBS SCRAPER");
 
+        tblJobs.setBackground(new java.awt.Color(255, 255, 255));
+        tblJobs.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tblJobs.setForeground(new java.awt.Color(0, 0, 0));
         tblJobs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -58,7 +61,7 @@ public class Work extends javax.swing.JFrame {
                 "Id", "Title", "Company", "Link"
             }
         ));
-        tblJobs.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblJobs.setSelectionBackground(new java.awt.Color(140, 43, 224));
         tblJobs.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblJobs.setUpdateSelectionOnSort(false);
         jScrollPane1.setViewportView(tblJobs);
