@@ -31,12 +31,15 @@ public class SeleniumAuto {
         webDriver.findElement(By.xpath("//*[@id=\"edit-pass\"]")).sendKeys(pass);
         webDriver.findElement(By.xpath("//*[@id=\"edit-submit\"]")).click();
         for(String link : links){
+            try{
             webDriver.navigate().to(link);
             webDriver.findElement(By.xpath("//*[@id=\"main-content\"]/div[1]/div[2]/a")).click();
             Thread.sleep(1000);
             webDriver.findElement(By.xpath("//*[@id=\"edit-body-und-0-value\"]")).sendKeys(message);
             webDriver.findElement(By.xpath("//*[@id=\"edit-submit\"]")).click();
-                        
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
             Thread.sleep(1000);
         }
 
