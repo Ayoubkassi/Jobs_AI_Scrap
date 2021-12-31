@@ -96,7 +96,7 @@ public class Indeed {
         ArrayList<Job> jobs = new ArrayList<Job>();
         ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         
-        for (int i = 310; i <= n*10; i+=10){
+        for (int i = 510; i <= n*10; i+=10){
             final String url = base_url+"&start="+i+"&jt="+type+"&fromage="+date;
 
             System.out.println(url);
@@ -237,7 +237,7 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = getLinks("software engineer",80,"","fulltime","14");
+        jobs = getLinks("software engineer",100,"","fulltime","14");
         }catch(Exception e){
             e.printStackTrace();
         }
