@@ -7,8 +7,12 @@ package machcinelearning;
 import User.EmploiJob;
 import static User.HandleDB.fetchJobs;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import weka.clusterers.ClusterEvaluation;
 import weka.clusterers.EM;
@@ -22,50 +26,50 @@ import weka.core.Instances;
  * @author ryota
  */
 public class ClusterJobs {
-    public static void main(String args[]) throws Exception{
-		
-		//load data
-		Instances data = new Instances(new BufferedReader(new FileReader("ClusterData.arff")));
-		
-		// new instance of clusterer
-                //or we can use Simple KMeans
+    
+    public static HashMap<Integer,ArrayList<EmploiJob>> getClusters(int n) throws FileNotFoundException, IOException, Exception{
+        
+                HashMap<Integer,ArrayList<EmploiJob>> jobsType = new HashMap<Integer,ArrayList<EmploiJob>>();
+                Instances data = new Instances(new BufferedReader(new FileReader("ClusterData.arff")));
+
                 SimpleKMeans model1 = new SimpleKMeans();
 		EM model = new EM();
                 
-                model.setNumClusters(2);
-                
-		// build the clusterer
-                //model1.buildClus
+                model.setNumClusters(n);
+   
 		model.buildClusterer(data);
-		//System.out.println(model);
 		System.out.println(model);
-                //let's cluster an instaance
                 
                 ArrayList<EmploiJob> jobs = fetchJobs();
-                for(EmploiJob job : jobs){
-                    char[] requirement = job.getRequirements().toCharArray();
-                    int[] requirements = new int[90];
-                    for (int i = 0; i < 45; i++) {
-                         requirements[i] = Character.getNumericValue(requirement[i*2]);
-                         System.out.print(requirements[i]+" ");
+
+       
+                for (int i = 0; i < n; i++) {
+                    ArrayList<EmploiJob> jobs1 = new ArrayList<EmploiJob>();
+                    int iter = 0;
+                    for(Instance in : data){
+                        if(model.clusterInstance(in) == i){
+                            jobs1.add(jobs.get(iter));
+                        }
+                        iter++;
                     }
                     
-                    System.out.println("");
-                     //Instance myTest = new DenseInstance(1.0, requirements);
-                     try{
-                     //System.out.println(job.getTitle() + "  ----------------  "+ model.clusterInstance(myTest));
-                     }catch(Exception ex){
-                         ex.printStackTrace();
-                     }
-                }
-                  
+                    jobsType.put(i, jobs1);
+                }   
                 
-
                 
-		//double logLikelihood = ClusterEvaluation.crossValidateModel(model, data, 10, new Random(1));
-		//System.out.println(logLikelihood);
+                
+                
+               return jobsType;
 
-
-	}
+    }
+    
+    
+    public static void main(String args[]) throws Exception{
+	   HashMap<Integer,ArrayList<EmploiJob>> jobsType = getClusters(4);
+           for (Map.Entry<Integer, ArrayList<EmploiJob>> entry : jobsType.entrySet()) {
+    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+               System.out.println("**************");
+}
+       }
 
 }
