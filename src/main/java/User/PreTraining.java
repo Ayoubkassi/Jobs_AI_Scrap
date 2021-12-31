@@ -54,6 +54,11 @@ public class PreTraining extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(140, 43, 224));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("CLASSIFY JOBS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(140, 43, 224));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,6 +136,14 @@ public class PreTraining extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+                    JobsClassification cp = null;                    
+                    cp = new JobsClassification();
+                    cp.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
