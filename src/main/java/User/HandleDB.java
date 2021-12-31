@@ -323,5 +323,23 @@ public class HandleDB {
     }
     
     
+    public static ArrayList<String> getEmploiLinks() throws ClassNotFoundException, SQLException{
+        ArrayList<String> links = new ArrayList<String>();
+        try{
+        Statement st = connectToDB();
+        String site = "Emploi";
+        String sql = "select link from Jobs where site='"+site+"'";
+        ResultSet rs = st.executeQuery(sql);
+        while (rs.next()) {
+           links.add(rs.getString("link"));
+        }
+            }catch(ClassNotFoundException | SQLException ex){
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return links;
+    }
+    
+    
    
 }
