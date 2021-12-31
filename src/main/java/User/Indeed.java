@@ -96,7 +96,7 @@ public class Indeed {
         ArrayList<Job> jobs = new ArrayList<Job>();
         ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         
-        for (int i = 510; i <= n*10; i+=10){
+        for (int i = 800; i <= n*10; i+=10){
             final String url = base_url+"&start="+i+"&jt="+type+"&fromage="+date;
 
             System.out.println(url);
