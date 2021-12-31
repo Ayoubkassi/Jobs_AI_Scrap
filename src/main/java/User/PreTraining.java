@@ -45,6 +45,11 @@ public class PreTraining extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(140, 43, 224));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SEARCH MOST COMPATIBLE JOBS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(140, 43, 224));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,6 +121,16 @@ public class PreTraining extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+                    CompatibleJobs cp = null;                    
+                    cp = new CompatibleJobs();
+                    cp.setVisible(true);
+                    this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

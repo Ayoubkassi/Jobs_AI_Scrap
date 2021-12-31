@@ -237,7 +237,7 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = getLinks("software engineer",50,"","fulltime","14");
+        jobs = getLinks("software engineer",80,"","fulltime","14");
         }catch(Exception e){
             e.printStackTrace();
         }
