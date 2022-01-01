@@ -66,13 +66,11 @@ public class Indeed {
         String base_url = first_url+med_url ;
         ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         
-        for (int i = 800; i <= n*10; i+=10){
+        for (int i = 10; i <= n*10; i+=10){
             final String url = base_url+"&start="+i+"&jt="+type+"&fromage="+date;
-
-            System.out.println(url);
+            System.out.println(i);
             final Document document = Jsoup.connect(url).get();
             Elements scriptElements = document.getElementsByTag("script");
-            System.out.println(document);
             int scr_num=0;
             String data= "";
             
@@ -112,15 +110,9 @@ public class Indeed {
                     String  job_link = "https://indeed.com/viewjob?jk="+jk+"&tk="+ext_data+"&from=serp&vjs=3";
                     int indexVille = job.indexOf(",city:'");
                     int endVille = job.indexOf("',title:");
-                    String ville = job.substring(indexVille+7,endVille);
-                    System.out.println(job_link);
-                         System.out.println(job_link);
-                    
-                    //Job current_job = new Job(title,company,job_link);                 
-                    //jobs.add(current_job);
-                    
-                    //each single job
+                    String ville = job.substring(indexVille+7,endVille);  
                     date = initialDate;
+                    
                     try{
                     Document single = Jsoup.connect(job_link).get();
                     Element body= single.select("body").get(0);
@@ -132,11 +124,9 @@ public class Indeed {
                     if(expexist){
                     experience = job_description.substring(experienceIndex -13,experienceIndex);
                     }
-                    //requirements 
                     
                     ArrayList<Integer> requirements = new ArrayList<Integer>();
-                        
-                        String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
+                    String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
                 ,"php","flutter","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
                 "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
             
@@ -184,7 +174,7 @@ public class Indeed {
         }
         
             
-//save in file        
+//save in file   txt format     
 //            FileWriter fw = new FileWriter("data.txt");
 //                    
 //           
@@ -207,7 +197,7 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = ScrapJobs("software engineer",100,"","fulltime","14");
+        jobs = ScrapJobs("software engineer",20,"","fulltime","3");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -215,9 +205,7 @@ public class Indeed {
         for(EmploiJob job : jobs){
             addJob(job,"Informatique","Indeed");
         }
-        //after saving into our db we must execute : update Jobs set typeContrat="CDI" where typeContrat="fulltime";
         
-        //singleJob("https://fr.indeed.com/voir-emploi?jk=1f985058e4f47e10&tk=1fm2prn1ir8bl800&from=serp&vjs=3");
     }   
 }
 
