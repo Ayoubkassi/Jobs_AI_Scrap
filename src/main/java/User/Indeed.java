@@ -35,40 +35,11 @@ import org.jsoup.select.Elements;
 
 public class Indeed {
     
-   public static void singleJob(String job_url) throws IOException{
- 
-        try{
-            
-            Document document = Jsoup.connect(job_url).get();
-            Element body= document.select("body").get(0);
-            Elements  div = body.select("div.jobsearch-JobComponent-description");           
-            String job_description = div.text().toLowerCase();
-
-        
-            String[] requirements ={"react","angular","vuejs","html","css"};
-            ArrayList<String> match_requirements = new ArrayList<String>();
-        
-            for(String req: requirements){
-                if(job_description.contains(req)){
-                    match_requirements.add(req);
-                }
-            }
-        
-            for(String req: match_requirements){
-                System.out.println(req);
-            }
-        
-        
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-
-    }
+   
     
     
     
-    public static ArrayList<EmploiJob> getLinks(String jobTitle, int n, String country , String type , String date) throws IOException{
+    public static ArrayList<EmploiJob> ScrapJobs(String jobTitle, int n, String country , String type , String date) throws IOException{
         String cnt = "";
         String initialDate = date;
 
@@ -93,7 +64,6 @@ public class Indeed {
         }
         
         String base_url = first_url+med_url ;
-        ArrayList<Job> jobs = new ArrayList<Job>();
         ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         
         for (int i = 800; i <= n*10; i+=10){
@@ -237,7 +207,7 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = getLinks("software engineer",100,"","fulltime","14");
+        jobs = ScrapJobs("software engineer",100,"","fulltime","14");
         }catch(Exception e){
             e.printStackTrace();
         }

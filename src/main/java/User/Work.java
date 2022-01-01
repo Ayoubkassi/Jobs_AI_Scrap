@@ -28,7 +28,6 @@ public class Work extends javax.swing.JFrame {
 
     public Work() {
         initComponents();
-        fetch();
     }
     
     //this is the constructor that we gonna be working with
@@ -174,7 +173,6 @@ public class Work extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-        ArrayList<Job> jobs = new ArrayList<Job>();
 
         Connection con;
         Statement st;
@@ -202,38 +200,7 @@ public class Work extends javax.swing.JFrame {
             }
         }
         
-       private void fetch() {
-       jobs.clear();
-       
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java", "root", "guillaume");
-            String sql = "select * from Jobs";
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                Job job = new Job(rs.getString("title"), rs.getString("company"), rs.getString("link"));
-                //job.setId(rs.getInt("id"));
-                //System.out.println(job.getId());
-                jobs.add(job);
-            }
-            DefaultTableModel model = (DefaultTableModel) tblJobs.getModel();
-            for (Job job : jobs) {
-
-                Object[] row = new Object[4];
-                job.setId(job.getId()+1);
-                row[0] = job.getId();
-                row[1] = job.getTitle();
-                row[2] = job.getCompany();
-                row[3] = job.getLink();
-
-                model.addRow(row);
-            }
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Work.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+      
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

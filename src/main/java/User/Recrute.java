@@ -4,7 +4,7 @@
  */
 package User;
 
-import static User.SaveJobsDB.jobTitle;
+import static User.Indeed.ScrapJobs;
 import com.mysql.cj.log.Log;
 import java.io.File;
 import java.io.FileWriter;
@@ -34,7 +34,9 @@ public class Recrute {
     
     
     //Recrute format
-    public static ArrayList<Offre> getJobs(String jobTitle, int n) throws IOException{
+    public static ArrayList<Offre> ScrapJobs(String jobTitle, int n) throws IOException{
+        
+        //scrap Jobs
         String[] words = jobTitle.split(" ");
         int size = words.length;
         String first_url = "https://www.rekrute.com/offres.html?s=1&p=2&o=1";
@@ -50,20 +52,15 @@ public class Recrute {
                 secondary+=str;
             }
             i++;
-        }     
-        
+        }             
         String base_url = first_url+secondary+"&keyword="+secondary ;
-        
-         ArrayList<Offre> jobs = new ArrayList<Offre>();
-            ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
-
+        ArrayList<Offre> jobs = new ArrayList<Offre>();
+        ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
         String s = "1234567891";
-      for (int l = 0; l <= 2; l++) {
+        for (int l = 0; l <= 2; l++) {
                  StringBuilder url1 = new StringBuilder(base_url);
                 char b = s.charAt(l);
-
                 url1.setCharAt(38, b);
-                //int foi = 9/(l+1);
                 int foi = 10;
                 if(l == 2){
                     foi = 2;
@@ -76,19 +73,17 @@ public class Recrute {
 
             if(k == foi){
                 url.setCharAt(42,'1');
-                //url.setCharAt(43,'0');
                 url.append('0');
             }else{
                 char c = s.charAt(k);
 
                 url.setCharAt(42, c);
             }
-                        
-                
-                final Document document = Jsoup.connect(url.toString()).get();
-                Elements scriptElements = document.select("ul.job-list.job-list2 > li");
+            
+            final Document document = Jsoup.connect(url.toString()).get();
+            Elements scriptElements = document.select("ul.job-list.job-list2 > li");
          
-
+            //transform Jobs
                 int sizeEle = scriptElements.size();
                 for (int j = 0; j < sizeEle; j++) {
                    try{
@@ -101,33 +96,30 @@ public class Recrute {
                         String requirements = infos.get(0).select("span").text();
                         String infoCompany = infos.get(0).select("span").get(1).text();                 
                         String description = infos.get(0).select("span").get(2).text(); 
-                        //ajouter ville
                         int villeIndex = title.indexOf(" | ");
                         String ville = title.substring(villeIndex+3);
-                        //ajouter contrat
                         Elements info = infos.get(0).select("ul");
                         String contrat = info.select("li").get(4).text().substring(26);
-                        //ajouter experience
                         String experience = info.select("li").get(2).text().substring(21);
                         System.out.println(experience);
-                        
                         String image = scriptElements.get(j).select("div > div > a > img").attr("src");
                         
                         
-                        //get requirements ready 
                         String[] technologies ={"react","angular","vuejs","html","css","javascript","python","sql","java","node","typescript","c#","bash","shell","c++"
             ,"php","flutter","go","kotlin","rust","ruby","dart","assembly","swift","matlab","mysql","postgresql","sqlite","mongodb","redis","firebase","oracle",
             "aws","docker","heroku","kubernetes","linux","flask","django","asp.net","spring","laravel","tensorflow","react native","keras"};
             System.out.println("*****************************");
             
-                    ArrayList<Integer> requirementes = new ArrayList<Integer>();
+                        ArrayList<Integer> requirementes = new ArrayList<Integer>();
 
-                    for (int f = 0; f < technologies.length; f++) {
+                        for (int f = 0; f < technologies.length; f++) {
                             if(description.toLowerCase().contains(technologies[f]) || requirements.toLowerCase().contains(technologies[f])){
                                 requirementes.add(1);
+                                //exist
                             }
                             else{
                                 requirementes.add(0); 
+                                //don't exist
                             }
                         }
                         
@@ -137,10 +129,7 @@ public class Recrute {
                         }
                         
                         String date = infos.get(0).select("em").text();                               
-                        String additionalInfo = infos.get(0).select("ul").text();
-                        Offre offre = new Offre(title,requirements,infoCompany,description,date,additionalInfo,image,link);
-                        jobs.add(offre);
-                        
+                        String additionalInfo = infos.get(0).select("ul").text();                        
                         //store in general EmploiJob
                         EmploiJob emploi = new EmploiJob(title,contrat,experience,ville,req,"1",link,date);
                         offres.add(emploi);
@@ -350,7 +339,7 @@ public class Recrute {
     
     public static void toJSON() throws IOException{
             ArrayList<Offre> jobs= new ArrayList<Offre>();
-            jobs = getJobs("developpeur",10);
+            jobs = ScrapJobs("developpeur",10);
             
             File csvFile = new File("json.csv");
             PrintWriter out = new PrintWriter(csvFile);
@@ -371,7 +360,7 @@ public class Recrute {
          ArrayList<Offre> skills= new ArrayList<Offre>();
 
         
-         jobs = getJobs("developpeur",10);
+         jobs = ScrapJobs("developpeur",10);
          
          HashMap<Integer,ArrayList<Integer>> preProc = new HashMap<Integer,ArrayList<Integer>>();
 
@@ -468,7 +457,7 @@ public class Recrute {
         System.out.println("Bismi Allah");
         
         //ArrayList<Offre> jobs= new ArrayList<Offre>();
-        getJobs("developpeur",10);
+        ScrapJobs("developpeur",10);
         //toJSON();
         //singleJob();
         //singleJob("https://www.rekrute.com/offre-emploi-responsable-administration-du-personnel-et-affaires-juridiques-recrutement-orh-assessment-casablanca-132525.html");

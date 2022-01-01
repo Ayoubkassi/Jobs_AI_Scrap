@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author ryota
  */
-public class Basic extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Basic
      */
-    public Basic() {
+    public Login() {
         initComponents();
     }
 

@@ -228,8 +228,8 @@ public class Register extends javax.swing.JFrame {
                 addUser(newUser);
                 //switch screen to login
                 
-                Basic cp = null;
-                cp = new Basic();                    
+                Login cp = null;
+                cp = new Login();                    
                 cp.setVisible(true);
                 this.setVisible(false);
             }
