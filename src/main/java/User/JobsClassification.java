@@ -195,6 +195,18 @@ public class JobsClassification extends javax.swing.JFrame {
             }
         }
          
+         //check number of column if is it more than 4
+         //tableModel.addColumn("Column #" + columnNumber++);
+         int tableCol = jTable1.getColumnCount();
+         int add = n - tableCol;
+         for (int j = 0; j < add; j++) {
+            String name = "classe"+(tableCol+j+1);
+            model.addColumn(name);
+        }
+         
+         
+         
+         
          //change data in columns
          for (int k = 0; k < maximum; k++) {
                   Object[] row = new Object[n];
