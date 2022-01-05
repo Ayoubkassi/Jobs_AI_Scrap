@@ -56,7 +56,7 @@ public class PreTraining extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(140, 43, 224));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CLASSIFY JOBS");
+        jButton2.setText("CLUSTERING");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -92,7 +92,7 @@ public class PreTraining extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(34, 34, 34))))
         );
