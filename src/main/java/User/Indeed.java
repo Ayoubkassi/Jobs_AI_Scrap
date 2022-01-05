@@ -197,13 +197,13 @@ public class Indeed {
         
         //chercher les offres dans tous le monde avec 10 pages , type CDD et date derniers 7 jours
         try{
-        jobs = ScrapJobs("software engineer",20,"","fulltime","3");
+        jobs = ScrapJobs("embedded engineer",20,"","Contract","3");
         }catch(Exception e){
             e.printStackTrace();
         }
         
         for(EmploiJob job : jobs){
-            addJob(job,"Informatique","Indeed");
+            addJob(job,"Systeme Embarque","Indeed");
         }
         
     }   

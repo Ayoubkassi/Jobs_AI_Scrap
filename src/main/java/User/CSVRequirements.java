@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class CSVRequirements {
     public static void saveCSVRequirements() throws FileNotFoundException{
-         File csvFile = new File("ActualData.csv");
+         File csvFile = new File("ActualData2.csv");
          PrintWriter out = new PrintWriter(csvFile);
          ArrayList<EmploiJob> jobs = fetchJobs();
          

@@ -46,15 +46,15 @@ public class LoadData {
     
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception{
         
-        DataSource source =  new DataSource("clustringData.arff");
-        Instances dataset = source.getDataSet();
-//        //Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/data.arff")));
+        //DataSource source =  new DataSource("/home/ryota/Desktop/ClusterData2.arff.arff");
+        //Instances dataset = source.getDataSet();
+    Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/ClusterData2.arff")));
 //        
 //        //System.out.println(dataset.toSummaryString());
 //        
         ArffSaver saver = new ArffSaver();
         saver.setInstances(dataset);
-        saver.setFile(new File("ClusterData.arff"));
+        saver.setFile(new File("final.arff"));
         saver.writeBatch();
 //        
 //        //classifing
