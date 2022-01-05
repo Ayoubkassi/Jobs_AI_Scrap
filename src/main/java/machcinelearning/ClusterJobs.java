@@ -41,9 +41,9 @@ public class ClusterJobs {
 		System.out.println(model);
                 
                 
-                System.out.println("searched values is : ");
-                double logLikelihood = ClusterEvaluation.crossValidateModel(model, data, 10, new Random(-1));
-		System.out.println(logLikelihood);
+                //System.out.println("searched values is : ");
+                //double logLikelihood = ClusterEvaluation.crossValidateModel(model, data, 8, new Random(-1));
+		//System.out.println(logLikelihood);
                 
                 ArrayList<EmploiJob> jobs = fetchJobs();
 

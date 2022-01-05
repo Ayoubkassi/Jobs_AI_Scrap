@@ -41,6 +41,9 @@ public class JobsClassification extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cluNum = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +62,7 @@ public class JobsClassification extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Class1", "Class2", "Class3", "Class"
+                "Class1", "Class2", "Class3", "Class4"
             }
         ));
         jTable1.setSelectionBackground(new java.awt.Color(140, 43, 224));
@@ -76,32 +79,56 @@ public class JobsClassification extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(140, 43, 224));
+        jLabel2.setText("Chnage Cluster Number : ");
+
+        cluNum.setForeground(new java.awt.Color(0, 0, 0));
+
+        jButton2.setBackground(new java.awt.Color(140, 43, 224));
+        jButton2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("START");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(302, 302, 302))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
+                        .addComponent(jLabel2)
+                        .addGap(38, 38, 38)
+                        .addComponent(cluNum, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(cluNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,9 +156,60 @@ public class JobsClassification extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int n = Integer.parseInt(cluNum.getText());
+        try {
+            changeCluster(n);
+        } catch (Exception ex) {
+            Logger.getLogger(JobsClassification.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    private void changeCluster(int n) throws Exception{
+         HashMap<Integer,ArrayList<EmploiJob>> jobsType = getClusters(n);
+          ArrayList<EmploiJob>[] al = new ArrayList[n];
+          DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+          model.setRowCount(0);
+         //create list of arrayList
+         for (int i = 0; i < n; i++) {
+            al[i] = new ArrayList<EmploiJob>();
+        }
+         
+         //create my own arrayLists to search in
+         int i = 0;
+         for (Map.Entry<Integer, ArrayList<EmploiJob>> entry : jobsType.entrySet()) {
+    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+         
+                        al[i] = entry.getValue();
+                        i++;
+                }
+         //find maximum
+         int maximum = al[0].size();
+         for (int j = 1; j < n; j++) {
+            if(al[j].size()> maximum){
+                maximum = al[j].size();
+            }
+        }
+         
+         //change data in columns
+         for (int k = 0; k < maximum; k++) {
+                  Object[] row = new Object[n];
+                  for (int j = 0; j < n; j++) {
+                    row[j] = k <= al[j].size() -1 ? al[j].get(k).title : "";
+                    
+             }
+                  
+                  
+                  model.addRow(row);
+        }
+         
+         
+         
+    }
     
     private void fetch() throws Exception{
         HashMap<Integer,ArrayList<EmploiJob>> jobsType = getClusters(4);
@@ -220,8 +298,11 @@ public class JobsClassification extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cluNum;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
