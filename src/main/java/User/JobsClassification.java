@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import static machcinelearning.ClusterJobs.getClusters;
 
 /**
@@ -100,19 +101,23 @@ public class JobsClassification extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(38, 38, 38)
-                        .addComponent(cluNum, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 51, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(222, 222, 222)
+                                .addComponent(jLabel2)
+                                .addGap(40, 40, 40)
+                                .addComponent(cluNum, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(jButton2))
+                            .addComponent(jLabel1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,9 +175,13 @@ public class JobsClassification extends javax.swing.JFrame {
      */
     
     private void changeCluster(int n) throws Exception{
+        
+        
          HashMap<Integer,ArrayList<EmploiJob>> jobsType = getClusters(n);
           ArrayList<EmploiJob>[] al = new ArrayList[n];
           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+          
+          ;
           model.setRowCount(0);
          //create list of arrayList
          for (int i = 0; i < n; i++) {
@@ -197,13 +206,24 @@ public class JobsClassification extends javax.swing.JFrame {
          
          //check number of column if is it more than 4
          //tableModel.addColumn("Column #" + columnNumber++);
+         //this is if we have more than the value
          int tableCol = jTable1.getColumnCount();
          int add = n - tableCol;
+  
          for (int j = 0; j < add; j++) {
             String name = "classe"+(tableCol+j+1);
             model.addColumn(name);
         }
          
+         //change case of a lot of columns
+//         if(tableCol > n){
+//             for (int j = n; j < tableCol; j++) {
+//                 TableColumn tcol = jTable1.getColumnModel().getColumn(j);
+//                jTable1.removeColumn(tcol);
+//             }
+//             
+//         }
+//         
          
          
          
