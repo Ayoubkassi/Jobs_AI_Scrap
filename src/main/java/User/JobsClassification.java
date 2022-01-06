@@ -181,7 +181,7 @@ public class JobsClassification extends javax.swing.JFrame {
           ArrayList<EmploiJob>[] al = new ArrayList[n];
           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
           
-          ;
+          
           model.setRowCount(0);
          //create list of arrayList
          for (int i = 0; i < n; i++) {
