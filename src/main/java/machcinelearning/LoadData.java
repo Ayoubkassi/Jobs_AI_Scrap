@@ -48,13 +48,13 @@ public class LoadData {
         
         //DataSource source =  new DataSource("/home/ryota/Desktop/ClusterData2.arff.arff");
         //Instances dataset = source.getDataSet();
-    Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/ClusterData2.arff")));
+    Instances dataset = new Instances(new BufferedReader (new FileReader("/home/ryota/Desktop/Embeded.arff")));
 //        
 //        //System.out.println(dataset.toSummaryString());
 //        
         ArffSaver saver = new ArffSaver();
         saver.setInstances(dataset);
-        saver.setFile(new File("final.arff"));
+        saver.setFile(new File("Embeded2.arff"));
         saver.writeBatch();
 //        
 //        //classifing

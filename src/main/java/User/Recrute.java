@@ -454,13 +454,9 @@ public class Recrute {
     }
     
     public static void main(String[] args) throws IOException{
-        System.out.println("Bismi Allah");
-        
-        //ArrayList<Offre> jobs= new ArrayList<Offre>();
+        System.out.println("Bismi Allah");        
         ScrapJobs("developpeur",10);
-        //toJSON();
-        //singleJob();
-        //singleJob("https://www.rekrute.com/offre-emploi-responsable-administration-du-personnel-et-affaires-juridiques-recrutement-orh-assessment-casablanca-132525.html");
+        
     }
     
 }

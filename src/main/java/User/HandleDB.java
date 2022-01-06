@@ -245,6 +245,25 @@ public class HandleDB {
         return jobs;
     }
     
+    public static ArrayList<EmploiJob>  fetchJobsDomaine(String name){
+        
+        ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
+        
+        try{
+            Statement st = connectToDB();
+            String sql = "select * from Jobs where domaine='"+name+"'";
+            ResultSet rs = st.executeQuery(sql);
+             while (rs.next()) {
+                EmploiJob job = new EmploiJob(rs.getString("title"), rs.getString("typeContrat"), rs.getString("experience"),rs.getString("ville"),rs.getString("requirements"),rs.getString("nbPoste"),rs.getString("link"),rs.getString("date"));
+                jobs.add(job);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return jobs;
+    }
+    
     //methode additionel pour afficher toutes les etudiant
     
     public static ArrayList<Offre> fetchJob(){
