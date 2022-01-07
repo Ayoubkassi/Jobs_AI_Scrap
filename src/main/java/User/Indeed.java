@@ -78,7 +78,7 @@ public class Indeed {
             try{
              for (Element element :scriptElements ){
                  scr_num++;
-                 if(scr_num == 24){
+                 if(scr_num == 25){
             for (DataNode node : element.dataNodes()) {
                 data = node.getWholeData(); 
                 System.out.println("data *************");

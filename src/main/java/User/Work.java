@@ -54,7 +54,7 @@ public class Work extends javax.swing.JFrame {
         
         String currentDate = date.toString().split(" ")[2];
         
-        if(currentDate.equals(date)){
+        if(currentDate.equals(dateScrap)){
                 offres = fetchJobsParamsDate(datee,domaine,type,country,indeed,rekrute,emploi);
         }else{
             //scrap data

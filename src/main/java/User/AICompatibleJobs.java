@@ -52,8 +52,6 @@ public class AICompatibleJobs {
         //getCompatibleJobs("html css js react");
 //     String dateScrap = lastDateScrap().split(" ")[0].split("-")[2];
 //        System.out.println(dateScrap);
-        Date date=java.util.Calendar.getInstance().getTime();
-        String test = date.toString().split(" ")[2];
-        System.out.println(test);
+     
     }
 }
