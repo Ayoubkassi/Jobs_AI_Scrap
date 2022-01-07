@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class CSVRequirements {
     public static void saveCSVRequirements() throws FileNotFoundException{
-         File csvFile = new File("datascience.csv");
+         File csvFile = new File("fullstack.csv");
          PrintWriter out = new PrintWriter(csvFile);
          //ArrayList<EmploiJob> jobs = fetchJobs();
-         ArrayList<EmploiJob> jobs = fetchJobsDomaine("Data Science");
+         ArrayList<EmploiJob> jobs = fetchJobsDomaine("FullStack");
          
          for(EmploiJob job : jobs){
             char[] requirement = job.requirements.toCharArray();
@@ -32,7 +32,7 @@ public class CSVRequirements {
              }
              
              out.printf("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s\n", 
-             requirements[0], requirements[2], requirements[4], requirements[6], requirements[8], requirements[10], requirements[12],requirements[14], requirements[16], requirements[18], requirements[20], requirements[22], requirements[24], requirements[26], requirements[28], requirements[30], requirements[32], requirements[34], requirements[36], requirements[38], requirements[40], requirements[42], requirements[44], requirements[46], requirements[48], requirements[50], requirements[52], requirements[54], requirements[56], requirements[58], requirements[60], requirements[62], requirements[64], requirements[66], requirements[68], requirements[70], requirements[72], requirements[74], requirements[76], requirements[78], requirements[80], requirements[82], requirements[84], requirements[86], requirements[88],"DataScience");
+             requirements[0], requirements[2], requirements[4], requirements[6], requirements[8], requirements[10], requirements[12],requirements[14], requirements[16], requirements[18], requirements[20], requirements[22], requirements[24], requirements[26], requirements[28], requirements[30], requirements[32], requirements[34], requirements[36], requirements[38], requirements[40], requirements[42], requirements[44], requirements[46], requirements[48], requirements[50], requirements[52], requirements[54], requirements[56], requirements[58], requirements[60], requirements[62], requirements[64], requirements[66], requirements[68], requirements[70], requirements[72], requirements[74], requirements[76], requirements[78], requirements[80], requirements[82], requirements[84], requirements[86], requirements[88],"FullStack");
              
              
          }
