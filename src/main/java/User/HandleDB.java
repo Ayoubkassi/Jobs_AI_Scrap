@@ -166,7 +166,7 @@ public class HandleDB {
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.first()){
-                //verifier si l'eleve existe deja dans la base de donnes;
+                //verifier si l'offre existe deja dans la base de donnes;
                 System.out.println("Sorry deja cette Offre existe avec le meme title et company");
             }else{
 
