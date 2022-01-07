@@ -5,7 +5,9 @@
 package User;
 
 import static User.HandleDB.fetchJobs;
+import static User.HandleDB.lastDateScrap;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -47,6 +49,11 @@ public class AICompatibleJobs {
     
     
     public static void main(String[] args){
-        getCompatibleJobs("html css js react");
+        //getCompatibleJobs("html css js react");
+//     String dateScrap = lastDateScrap().split(" ")[0].split("-")[2];
+//        System.out.println(dateScrap);
+        Date date=java.util.Calendar.getInstance().getTime();
+        String test = date.toString().split(" ")[2];
+        System.out.println(test);
     }
 }

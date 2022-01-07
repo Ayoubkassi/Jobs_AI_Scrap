@@ -4,14 +4,21 @@
  */
 package User;
 
+import static User.Emploi.getJobs;
 import static User.HandleDB.fetchJobsParams;
 import static User.HandleDB.fetchJobsParamsDate;
+import static User.HandleDB.lastDateScrap;
+import static User.Indeed.ScrapJobs;
+import static User.Recrute.ScrapJobs;
+import static User.Recrute.getJobsGen;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -26,17 +33,55 @@ public class Work extends javax.swing.JFrame {
      * Creates new form Work
      */
     ArrayList<EmploiJob> offres = new ArrayList<EmploiJob>();
-
+    ArrayList<EmploiJob> offres1 = new ArrayList<EmploiJob>();
+    ArrayList<EmploiJob> offres2 = new ArrayList<EmploiJob>();
+    
     public Work() {
         initComponents();
     }
     
     //this is the constructor that we gonna be working with
-    public Work(String startdate , String enddate ,String domaine, String type,String country,String indeed,String rekrute , String emploi) {
+    public Work(String startdate , String enddate ,String domaine, String type,String country,String indeed,String rekrute , String emploi) throws IOException {
         initComponents();
-        String date = enddate.split("-")[0];
+        String datee = enddate.split("-")[0];
+        //System.out.println(datee);
+        //here we gonna choose between scrap or load database
+        //check day of month
+        String dateScrap = lastDateScrap().split(" ")[0].split("-")[2];
+        
+        Date date=java.util.Calendar.getInstance().getTime();
         System.out.println(date);
-        offres = fetchJobsParamsDate(date,domaine,type,country,indeed,rekrute,emploi);
+        
+        String currentDate = date.toString().split(" ")[2];
+        
+        if(currentDate.equals(date)){
+                offres = fetchJobsParamsDate(datee,domaine,type,country,indeed,rekrute,emploi);
+        }else{
+            //scrap data
+            if(indeed.equals("Indeed")){
+                //scrap indeed
+                offres = ScrapJobs("Software Engineer",10,"",type,"3");
+            }
+            if(rekrute.equals("Rekrute")){
+                offres1 = getJobsGen("developpeur",10);
+            }
+            if(emploi.equals("Emploi")){
+                offres2 = getJobs("",20);
+            }
+            
+            //add rekrute to all
+            
+            for(EmploiJob job : offres1){
+                offres.add(job);
+            }
+            
+            //add Emploi jobs
+            
+            for(EmploiJob job : offres2){
+                offres.add(job);
+            }
+        }
+        
         
         updateTable();
     }

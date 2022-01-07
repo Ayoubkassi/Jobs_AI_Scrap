@@ -4,6 +4,11 @@
  */
 package User;
 
+import static User.HandleDB.lastDateScrap;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ryota
@@ -14,6 +19,7 @@ public class Intermed extends javax.swing.JFrame {
      * Creates new form Intermed
      */
     public Intermed() {
+        
         initComponents();
     }
 
@@ -290,7 +296,11 @@ public class Intermed extends javax.swing.JFrame {
                     System.out.println("Emploi : "+emploi);
                     Work cp = null;
                     
-                    cp = new Work(start,end,domain,typ,contry,indeed,recrute,emploi);
+        try {
+            cp = new Work(start,end,domain,typ,contry,indeed,recrute,emploi);
+        } catch (IOException ex) {
+            Logger.getLogger(Intermed.class.getName()).log(Level.SEVERE, null, ex);
+        }
                     
                     cp.setVisible(true);
                     this.setVisible(false);

@@ -386,5 +386,22 @@ public class HandleDB {
     }
     
     
-   
+   //select dateScrap from Jobs ORDER BY id DESC LIMIT 1;
+    
+    
+    public static String lastDateScrap(){
+        String lastDate= "";
+        try{
+             Statement st = connectToDB();
+             String sql = "select * from Jobs ORDER BY id DESC LIMIT 1";
+             ResultSet rs = st.executeQuery(sql);
+             while(rs.next()){
+                lastDate = rs.getString("dateScrap");
+             }
+        }catch(ClassNotFoundException | SQLException ex){
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lastDate;
+    }
 }
