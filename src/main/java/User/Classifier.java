@@ -65,7 +65,7 @@ public class Classifier extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Embeded", "FrontEnd", "BackEnd"
+                "Embeded", "FrontEnd", "BackEnd", "DataScience"
             }
         ));
         jTable1.setSelectionBackground(new java.awt.Color(140, 43, 224));
@@ -256,7 +256,9 @@ public class Classifier extends javax.swing.JFrame {
         ArrayList<EmploiJob> embeded = fetchJobsDomaine("Systeme Embarque");
         ArrayList<EmploiJob> frontend = fetchJobsDomaine("Front End");
         ArrayList<EmploiJob> backend = fetchJobsDomaine("Back End");
-        
+        ArrayList<EmploiJob> datascience = fetchJobsDomaine("Data Science");
+
+                
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
@@ -264,10 +266,11 @@ public class Classifier extends javax.swing.JFrame {
         int maximum = max(max1,backend.size());
         
         for (int i = 0; i < maximum; i++) {
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = i <= embeded.size() -1 ? embeded.get(i).title : "";
             row[1] = i <= frontend.size() -1 ? frontend.get(i).title : "";
             row[2] = i <= backend.size() -1 ? backend.get(i).title : "";
+            row[3] = i <= datascience.size() -1 ? datascience.get(i).title : "";
             
             model.addRow(row);
         }

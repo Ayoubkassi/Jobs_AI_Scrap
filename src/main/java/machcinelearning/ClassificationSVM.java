@@ -20,7 +20,6 @@ public class ClassificationSVM {
         //specifiy the class attribute
         dataset.setClassIndex(dataset.numAttributes()-1);
         
-        
         //create and build the classifier
         SMO svm = new SMO();
         

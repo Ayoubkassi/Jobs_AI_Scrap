@@ -5,6 +5,7 @@
 package User;
 
 import static User.HandleDB.fetchJobsParams;
+import static User.HandleDB.fetchJobsParamsDate;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,9 +32,11 @@ public class Work extends javax.swing.JFrame {
     }
     
     //this is the constructor that we gonna be working with
-    public Work(String domaine, String type,String country,String indeed,String rekrute , String emploi) {
+    public Work(String startdate , String enddate ,String domaine, String type,String country,String indeed,String rekrute , String emploi) {
         initComponents();
-        offres = fetchJobsParams(domaine,type,country,indeed,rekrute,emploi);
+        String date = enddate.split("-")[0];
+        System.out.println(date);
+        offres = fetchJobsParamsDate(date,domaine,type,country,indeed,rekrute,emploi);
         
         updateTable();
     }
@@ -70,7 +73,7 @@ public class Work extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Title", "Company", "Link"
+                "Id", "Title", "Company", "Ville"
             }
         ));
         tblJobs.setGridColor(new java.awt.Color(140, 43, 224));

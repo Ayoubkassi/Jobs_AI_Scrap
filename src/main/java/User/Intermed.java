@@ -281,6 +281,8 @@ public class Intermed extends javax.swing.JFrame {
                     String domain = domaine.getText();
                     String typ = type.getText();
                     String contry = country.getText();
+                    String start = startdate.getText();
+                    String end = endate.getText();
                     
                     
                     System.out.println("Indeed : "+indeed);
@@ -288,7 +290,7 @@ public class Intermed extends javax.swing.JFrame {
                     System.out.println("Emploi : "+emploi);
                     Work cp = null;
                     
-                    cp = new Work(domain,typ,contry,indeed,recrute,emploi);
+                    cp = new Work(start,end,domain,typ,contry,indeed,recrute,emploi);
                     
                     cp.setVisible(true);
                     this.setVisible(false);

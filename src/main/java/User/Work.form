@@ -120,7 +120,7 @@
                     <Column editable="true" title="Id" type="java.lang.Object"/>
                     <Column editable="true" title="Title" type="java.lang.Object"/>
                     <Column editable="true" title="Company" type="java.lang.Object"/>
-                    <Column editable="true" title="Link" type="java.lang.Object"/>
+                    <Column editable="true" title="Ville" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

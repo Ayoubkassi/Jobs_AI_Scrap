@@ -92,28 +92,11 @@ public class ClassificationJ48 {
 		tree.buildClassifier(data);
 		System.out.println(tree);
                 
-               // Classify new instance.
-               
-//               double[] vals = new double[data.numAttributes()];
-//		      for (int i = 0; i < 45; i++) {
-//                        vals[i] = tab[i]; 
-//		 }
-//		Instance myJob = new DenseInstance(1.0, vals);
-//		//Assosiate your instance with Instance object in this case dataRaw
-//		myJob.setDataset(data); 
-//                
-//                double label = tree.classifyInstance(myJob);
-//		System.out.println(data.classAttribute().value((int) label));
-                
-                /*
-		 * Visualize decision tree
-		 */
                 
                 TreeVisualizer tv = new TreeVisualizer(null, tree.graph(),
 				new PlaceNode2());
 		JFrame frame = new javax.swing.JFrame("Tree Visualizer");
 		frame.setSize(2600, 850);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(tv);
 		frame.setVisible(true);
 		tv.fitToScreen();
