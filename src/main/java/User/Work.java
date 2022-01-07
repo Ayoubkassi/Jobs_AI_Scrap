@@ -5,6 +5,7 @@
 package User;
 
 import static User.Emploi.getJobs;
+import static User.HandleDB.addJob;
 import static User.HandleDB.fetchJobsParams;
 import static User.HandleDB.fetchJobsParamsDate;
 import static User.HandleDB.lastDateScrap;
@@ -41,7 +42,7 @@ public class Work extends javax.swing.JFrame {
     }
     
     //this is the constructor that we gonna be working with
-    public Work(String startdate , String enddate ,String domaine, String type,String country,String indeed,String rekrute , String emploi) throws IOException {
+    public Work(String startdate , String enddate ,String domaine, String type,String country,String indeed,String rekrute , String emploi) throws IOException, SQLException, ClassNotFoundException {
         initComponents();
         String datee = enddate.split("-")[0];
         //System.out.println(datee);
@@ -61,25 +62,36 @@ public class Work extends javax.swing.JFrame {
             if(indeed.equals("Indeed")){
                 //scrap indeed
                 offres = ScrapJobs("Software Engineer",10,"",type,"3");
+                for(EmploiJob job : offres){
+                    //and add into database
+                    addJob(job,"FullStack","Indeed");
+                }
             }
             if(rekrute.equals("Rekrute")){
                 offres1 = getJobsGen("developpeur",10);
             }
             if(emploi.equals("Emploi")){
                 offres2 = getJobs("",20);
+                
             }
             
             //add rekrute to all
             
             for(EmploiJob job : offres1){
                 offres.add(job);
+                //and add into database
+                addJob(job,"FullStack","Rekrute");
             }
             
             //add Emploi jobs
             
             for(EmploiJob job : offres2){
                 offres.add(job);
+                //and add into database
+                addJob(job,"FullStack","Emploi");
             }
+            
+           
         }
         
         
