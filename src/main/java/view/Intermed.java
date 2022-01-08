@@ -168,6 +168,11 @@ public class Intermed extends javax.swing.JFrame {
         RecruteB.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         RecruteB.setForeground(new java.awt.Color(140, 43, 224));
         RecruteB.setText("Recrute");
+        RecruteB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecruteBActionPerformed(evt);
+            }
+        });
 
         EmploiB.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         EmploiB.setForeground(new java.awt.Color(140, 43, 224));
@@ -201,8 +206,8 @@ public class Intermed extends javax.swing.JFrame {
                                 .addComponent(endate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(indeedB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EmploiB))
+                                .addGap(40, 40, 40)
+                                .addComponent(RecruteB))
                             .addComponent(country, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(type)
                             .addComponent(title))
@@ -214,10 +219,11 @@ public class Intermed extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGap(178, 178, 178))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RecruteB)
-                                    .addComponent(jButton1))
-                                .addGap(98, 98, 98))))))
+                                .addComponent(jButton1)
+                                .addGap(98, 98, 98))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(EmploiB)
+                                .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,6 +280,10 @@ public class Intermed extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RecruteBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecruteBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RecruteBActionPerformed
 
     private void titleActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_titleActionPerformed
         // TODO add your handling code here:

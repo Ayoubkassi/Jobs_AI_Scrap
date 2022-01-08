@@ -225,6 +225,24 @@ public class HandleDB {
 
         return jobs;
     }
+    
+    
+    public static ArrayList<String> fetchRequirements(){
+        ArrayList<String> wantedTechs = new ArrayList<String>();
+        try{
+             Statement st = connectToDB();
+             String sql = "select requirements from Jobs";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+               String requi = rs.getString("requirements");
+               wantedTechs.add(requi);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+             Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return wantedTechs;
+    }
 
     // methode additionel pour supprimer un etudiant avec nom et prenom
 
@@ -299,4 +317,7 @@ public class HandleDB {
 
         return lastDate;
     }
+    
+    
+   
 }
