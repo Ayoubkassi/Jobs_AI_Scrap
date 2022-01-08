@@ -49,7 +49,6 @@ public class Work extends javax.swing.JFrame {
         // System.out.println(datee);
         // Get Scrape Rate Configs
         HashMap scrapeRateConfigs = getScrapeConfigs();
-        System.out.println(scrapeRateConfigs.toString());
         // here we gonna choose between scrap or load database
         // check day of month
         // Current Date
@@ -62,11 +61,11 @@ public class Work extends javax.swing.JFrame {
         GFG dateDiff = new GFG();
         dateDiff.findDifference(dateScrap, currentDateTime);
 
-        System.out.println(dateDiff.difference_In_Days);
-        System.out.println(dateDiff.difference_In_Hours);
+        System.out.println("Diff in days : " + dateDiff.difference_In_Days);
+        System.out.println("Diff in hours : " + dateDiff.difference_In_Hours);
 
 
-        if (scrapeRateConfigs.get("scrape_rate_context").equals("hours")) {
+        if (scrapeRateConfigs.get("scrape_rate_context").toString().toLowerCase().equals("hours")) {
             if (dateDiff.difference_In_Hours < Integer.parseInt(scrapeRateConfigs.get("scrape_rate_count").toString())) {
                 offres = fetchJobsParamsDate(datee, domaine, type, country, indeed, rekrute, emploi);
             } else {
@@ -104,7 +103,7 @@ public class Work extends javax.swing.JFrame {
                 }
 
             }
-        } else if (scrapeRateConfigs.get("scrape_rate_context").equals("days")) {
+        } else if (scrapeRateConfigs.get("scrape_rate_context").toString().toLowerCase().equals("days")) {
             if (dateDiff.difference_In_Days < Integer.parseInt(scrapeRateConfigs.get("scrape_rate_count").toString())) {
                 offres = fetchJobsParamsDate(datee, domaine, type, country, indeed, rekrute, emploi);
             } else {
