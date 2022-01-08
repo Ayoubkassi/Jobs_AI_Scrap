@@ -94,7 +94,7 @@ public class ClassificationJ48 {
 		TreeVisualizer tv = new TreeVisualizer(null, tree.graph(),
 				new PlaceNode2());
 		JFrame frame = new javax.swing.JFrame("Tree Visualizer");
-		frame.setSize(2600, 850);
+		frame.setSize(3200, 850);
 		frame.getContentPane().add(tv);
 		frame.setVisible(true);
 		tv.fitToScreen();
