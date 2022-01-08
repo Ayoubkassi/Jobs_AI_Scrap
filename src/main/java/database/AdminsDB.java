@@ -7,7 +7,9 @@ package database;
 import model.Admins;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -16,6 +18,19 @@ import java.util.ArrayList;
  * @author pattern
  */
 public class AdminsDB {
+    
+    private static Connection link;
+    private static String url = "jdbc:mysql://localhost:3306/othmane?allowMultiQueries=true";
+    private static String user = "othmane";
+    private static String password = "Ot20hmane00";
+    
+    private static void initConnection() throws ClassNotFoundException, SQLException {
+        // Define Driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        // Initialize connection
+        link = DriverManager.getConnection(url, user, password);
+    }
 
     // retourner toutes les admines de la base
     public static ArrayList<Admins> getAdmins() {
@@ -25,9 +40,6 @@ public class AdminsDB {
 
         // PreparedStatement preparedstatement = null;
         ResultSet resultSet = null;
-        String url = "jdbc:mysql://localhost:3306/JobsScraper";
-        String user = "root";
-        String password = "guillaume";
 
         ArrayList<Admins> admins = new ArrayList<Admins>();
 
@@ -37,6 +49,8 @@ public class AdminsDB {
 
             // Initialize connection
             connect = DriverManager.getConnection(url, user, password);
+            
+            link = connect;
             // statements
 
             statement = connect.createStatement();
@@ -70,5 +84,22 @@ public class AdminsDB {
 
         return admins;
 
+    }
+    
+    public static boolean updateScrapeRate(String rateCount, String rateContext ) throws Exception {
+        initConnection();
+
+        String query = "update `configs` set `config_value`=? where `config_name`='scrape_rate_count';"+
+                "update `configs` set `config_value`=? where `config_name`='scrape_rate_context';";
+        try (PreparedStatement pstmt = link.prepareStatement(query)) {
+            pstmt.setString(1, rateCount);
+            pstmt.setString(2, rateContext);
+            
+            int affectedRows = pstmt.executeUpdate();
+            
+            return affectedRows > 0;
+        } catch (Exception e) {
+            throw e;
+        } 
     }
 }

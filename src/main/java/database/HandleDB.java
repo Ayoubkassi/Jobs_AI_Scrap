@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,13 +30,13 @@ public class HandleDB {
 
         Connection connect = null;
         Statement statement = null;
-        String url = "jdbc:mysql://localhost:3306/JobsScraper";
-        String user = "root";
-        String password = "guillaume";
+        String url = "jdbc:mysql://localhost:3306/othmane";
+        String user = "othmane";
+        String password = "Ot20hmane00";
 
         try {
             // Definer notre driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Initializer la connection
             connect = DriverManager.getConnection(url, user, password);
             // statements
@@ -318,6 +319,25 @@ public class HandleDB {
         return lastDate;
     }
     
+<<<<<<< HEAD
     
    
+=======
+    public static HashMap<String, String> getScrapeConfigs() {
+        HashMap<String, String> configs = new HashMap<>();
+        try {
+            Statement st = connectToDB();
+            String sql = "select * from `configs` where `config_name`='scrape_rate_context' or `config_name`='scrape_rate_count'";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                configs.put(rs.getString("config_name"), rs.getString("config_value"));
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HandleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return configs;
+    }
+>>>>>>> b3d910cdc1277e90b3e4b66392700783d8d9f0ed
 }
