@@ -2,41 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package User;
-
-import java.util.ArrayList;
+package model;
 
 /**
  *
- * @author ryota
+ * @author pattern
  */
 public class EmploiJob {
-    String title;
-    String typeContart;
-    String experience;
-    String ville;
-    String requirements;
-    String nbPoste;
-    String link;
-    String date;
-    
-    
-//    CREATE TABLE Jobs(
-//            id INT(11) PRIMARY KEY AUTO_INCREMENT,
-//            title VARCHAR(100),
-//            typeContrat VARCHAR(100),
-//            experience VARCHAR(100),
-//            ville VARCHAR(100),
-//            requirements VARCHAR(100),
-//            nbPoste VARCHAR(100),
-//            link VARCHAR(100),
-//            date VARCHAR(100),
-//    );
+    public String title;
+    public String typeContart;
+    public String experience;
+    public String ville;
+    public String requirements;
+    public String nbPoste;
+    public String link;
+    public String date;
 
     public EmploiJob() {
     }
 
-    public EmploiJob(String title, String typeContart, String experience, String ville, String requirements, String nbPoste, String link, String date) {
+    public EmploiJob(String title, String typeContart, String experience, String ville, String requirements,
+            String nbPoste, String link, String date) {
         this.title = title;
         this.typeContart = typeContart;
         this.experience = experience;
@@ -46,8 +32,6 @@ public class EmploiJob {
         this.link = link;
         this.date = date;
     }
-
-    
 
     public String getTitle() {
         return title;
@@ -81,8 +65,6 @@ public class EmploiJob {
         this.ville = ville;
     }
 
-   
-
     public String getNbPoste() {
         return nbPoste;
     }
@@ -114,16 +96,16 @@ public class EmploiJob {
     public void setRequirements(String requirements) {
         this.requirements = requirements;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "EmploiJob{" + "title=" + title + ", typeContart=" + typeContart + ", experience=" + experience + ", ville=" + ville + ", requirements=" + requirements + ", nbPoste=" + nbPoste + ", link=" + link + ", date=" + date + '}';
+        return "EmploiJob{" + "title=" + title + ", typeContart=" + typeContart + ", experience=" + experience
+                + ", ville=" + ville + ", requirements=" + requirements + ", nbPoste=" + nbPoste + ", link=" + link
+                + ", date=" + date + '}';
     }
-    
-    public void affiche(){
+
+    public void affiche() {
         System.out.println(this.toString());
     }
-    
+
 }

@@ -2,27 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package User;
+package model;
 
 /**
  *
- * @author ryota
+ * @author pattern
  */
 public class User {
-    String email;
-    String username;
-    String pasword;
-    String secteur;
+    public String email;
+    public String username;
+    public String pasword;
+    public String secteur;
 
-    //parameterize constructor 
+    // parameterize constructor
     public User(String email, String username, String pasword, String secteur) {
         this.email = email;
         this.username = username;
         this.pasword = pasword;
         this.secteur = secteur;
     }
-    
-    //setters and getters
+
+    // setters and getters
 
     public String getEmail() {
         return email;
@@ -58,12 +58,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "email=" + email + ", username=" + username + ", pasword=" + pasword + ", secteur=" + secteur + '}';
+        return "User{" + "email=" + email + ", username=" + username + ", pasword=" + pasword + ", secteur=" + secteur
+                + '}';
     }
-    
-    public void affiche(){
+
+    public void affiche() {
         System.out.println(this.toString());
     }
-    
-    
+
 }

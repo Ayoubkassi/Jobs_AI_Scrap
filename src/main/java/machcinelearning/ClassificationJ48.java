@@ -19,17 +19,16 @@ import weka.gui.treevisualizer.TreeVisualizer;
 
 /**
  *
- * @author ryota
+ * @author pattern
  */
 public class ClassificationJ48 {
-    
-    
-    public static String predInstance(int[] tab)throws Exception{
-     ConverterUtils.DataSource source = new ConverterUtils.DataSource("classificationdata.arff");
-            Instances data = source.getDataSet();
-            System.out.println(data.numInstances() + " instances loaded.");
-        
-            /*
+
+	public static String predInstance(int[] tab) throws Exception {
+		ConverterUtils.DataSource source = new ConverterUtils.DataSource("classificationdata.arff");
+		Instances data = source.getDataSet();
+		System.out.println(data.numInstances() + " instances loaded.");
+
+		/*
 		 * Feature selection
 		 */
 		AttributeSelection attSelect = new AttributeSelection();
@@ -39,9 +38,9 @@ public class ClassificationJ48 {
 		attSelect.setSearch(search);
 		attSelect.SelectAttributes(data);
 		int[] indices = attSelect.selectedAttributes();
-		System.out.println("Selected attributes: "+Utils.arrayToString(indices));
-                
-                /*
+		System.out.println("Selected attributes: " + Utils.arrayToString(indices));
+
+		/*
 		 * Build a decision tree
 		 */
 		String[] options = new String[1];
@@ -50,27 +49,27 @@ public class ClassificationJ48 {
 		tree.setOptions(options);
 		tree.buildClassifier(data);
 		System.out.println(tree);
-                
-               // Classify new instance.
-               
-               double[] vals = new double[data.numAttributes()];
-		      for (int i = 0; i < 45; i++) {
-                        vals[i] = tab[i]; 
-		 }
+
+		// Classify new instance.
+
+		double[] vals = new double[data.numAttributes()];
+		for (int i = 0; i < 45; i++) {
+			vals[i] = tab[i];
+		}
 		Instance myJob = new DenseInstance(1.0, vals);
-		//Assosiate your instance with Instance object in this case dataRaw
-		myJob.setDataset(data); 
-                
-                double label = tree.classifyInstance(myJob);
-		return data.classAttribute().value((int) label);   
-    }
-    
-    public static void classify() throws Exception{
-        ConverterUtils.DataSource source = new ConverterUtils.DataSource("classificationdata.arff");
-            Instances data = source.getDataSet();
-            System.out.println(data.numInstances() + " instances loaded.");
-        
-            /*
+		// Assosiate your instance with Instance object in this case dataRaw
+		myJob.setDataset(data);
+
+		double label = tree.classifyInstance(myJob);
+		return data.classAttribute().value((int) label);
+	}
+
+	public static void classify() throws Exception {
+		ConverterUtils.DataSource source = new ConverterUtils.DataSource("classificationdata.arff");
+		Instances data = source.getDataSet();
+		System.out.println(data.numInstances() + " instances loaded.");
+
+		/*
 		 * Feature selection
 		 */
 		AttributeSelection attSelect = new AttributeSelection();
@@ -80,9 +79,9 @@ public class ClassificationJ48 {
 		attSelect.setSearch(search);
 		attSelect.SelectAttributes(data);
 		int[] indices = attSelect.selectedAttributes();
-		System.out.println("Selected attributes: "+Utils.arrayToString(indices));
-                
-                /*
+		System.out.println("Selected attributes: " + Utils.arrayToString(indices));
+
+		/*
 		 * Build a decision tree
 		 */
 		String[] options = new String[1];
@@ -91,25 +90,20 @@ public class ClassificationJ48 {
 		tree.setOptions(options);
 		tree.buildClassifier(data);
 		System.out.println(tree);
-                
-                
-                TreeVisualizer tv = new TreeVisualizer(null, tree.graph(),
+
+		TreeVisualizer tv = new TreeVisualizer(null, tree.graph(),
 				new PlaceNode2());
 		JFrame frame = new javax.swing.JFrame("Tree Visualizer");
 		frame.setSize(2600, 850);
 		frame.getContentPane().add(tv);
 		frame.setVisible(true);
 		tv.fitToScreen();
-    }
-    
-    public static void main(String[] args) throws Exception{
-       //load the data
-            //classify();
-		
-    }
-    
+	}
+
+	public static void main(String[] args) throws Exception {
+		// load the data
+		// classify();
+
+	}
+
 }
-    
-
-                
-

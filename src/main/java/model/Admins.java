@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package User;
+package model;
 
 /**
  *
- * @author ryota
+ * @author pattern
  */
 public class Admins {
-     private int id;
+    private int id;
     private String username;
     private String password;
-    
-    public Admins(){
+
+    public Admins() {
         super();
     }
 
@@ -52,8 +52,5 @@ public class Admins {
     public String toString() {
         return "Admins{" + "id=" + id + ", username=" + username + ", password=" + password + '}';
     }
-    
-    
-    
-    
+
 }

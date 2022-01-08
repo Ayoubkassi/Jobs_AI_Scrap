@@ -10,24 +10,24 @@ import weka.core.converters.ConverterUtils;
 
 /**
  *
- * @author ryota
+ * @author pattern
  */
 public class ClassificationSVM {
-    public static void main(String[] args) throws Exception{
-        ConverterUtils.DataSource source =  new ConverterUtils.DataSource("/home/ryota/Desktop/new1.arff");
+    public static void main(String[] args) throws Exception {
+        ConverterUtils.DataSource source = new ConverterUtils.DataSource("/home/ryota/Desktop/new1.arff");
         Instances dataset = source.getDataSet();
-        
-        //specifiy the class attribute
-        dataset.setClassIndex(dataset.numAttributes()-1);
-        
-        //create and build the classifier
+
+        // specifiy the class attribute
+        dataset.setClassIndex(dataset.numAttributes() - 1);
+
+        // create and build the classifier
         SMO svm = new SMO();
-        
+
         svm.buildClassifier(dataset);
-        
-        //print result
-        
+
+        // print result
+
         System.out.println(svm.getCapabilities().toString());
-        
+
     }
 }
