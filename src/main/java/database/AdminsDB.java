@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class AdminsDB {
     
     private static Connection link;
-    private static String url = "jdbc:mysql://localhost:3306/othmane?allowMultiQueries=true";
-    private static String user = "othmane";
-    private static String password = "Ot20hmane00";
+    private static String url = "jdbc:mysql://localhost:3306/JobsScraper?allowMultiQueries=true";
+    private static String user = "root";
+    private static String password = "guillaume";
     
     private static void initConnection() throws ClassNotFoundException, SQLException {
         // Define Driver

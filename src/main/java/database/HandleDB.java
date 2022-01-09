@@ -30,9 +30,9 @@ public class HandleDB {
 
         Connection connect = null;
         Statement statement = null;
-        String url = "jdbc:mysql://localhost:3306/othmane";
-        String user = "othmane";
-        String password = "Ot20hmane00";
+        String url = "jdbc:mysql://localhost:3306/JobsScraper";
+        String user = "root";
+        String password = "guillaume";
 
         try {
             // Definer notre driver
@@ -319,15 +319,12 @@ public class HandleDB {
         return lastDate;
     }
     
-<<<<<<< HEAD
-    
-   
-=======
+
     public static HashMap<String, String> getScrapeConfigs() {
         HashMap<String, String> configs = new HashMap<>();
         try {
             Statement st = connectToDB();
-            String sql = "select * from `configs` where `config_name`='scrape_rate_context' or `config_name`='scrape_rate_count'";
+            String sql = "select * from configs where config_name='scrape_rate_context' or `config_name`='scrape_rate_count'";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 configs.put(rs.getString("config_name"), rs.getString("config_value"));
@@ -339,5 +336,4 @@ public class HandleDB {
 
         return configs;
     }
->>>>>>> b3d910cdc1277e90b3e4b66392700783d8d9f0ed
 }
