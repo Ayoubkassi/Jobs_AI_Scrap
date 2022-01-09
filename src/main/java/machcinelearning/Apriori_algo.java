@@ -129,7 +129,7 @@ public class Apriori_algo {
 	//start serialisation----------
 	 try
      {
-         FileOutputStream fos = new FileOutputStream("/home/ryota/Dektop/CRUD/Java_Desktop/listeRules");
+         FileOutputStream fos = new FileOutputStream("/home/ryota/Desktop/CRUD/Java_Desktop/listeRules");
          ObjectOutputStream oos = new ObjectOutputStream(fos);
          oos.writeObject(liste_rules);
          oos.close();
