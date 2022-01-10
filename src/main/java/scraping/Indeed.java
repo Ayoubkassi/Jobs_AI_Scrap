@@ -110,7 +110,7 @@ public class Indeed {
 
                                 ArrayList<Integer> requirements = new ArrayList<Integer>();
                                 String[] technologies = { "react", "angular", "vuejs", "html", "css", "javascript",
-                                        "python", "sql", "java", "node", "typescript", "c#", "bash", "shell", "c++",
+                                        "python", "sql", " java ", "node", "typescript", "c#", "bash", "shell", "c++",
                                         "php", "flutter", "go", "kotlin", "rust", "ruby", "dart", "assembly", "swift",
                                         "matlab", "mysql", "postgresql", "sqlite", "mongodb", "redis", "firebase",
                                         "oracle",
@@ -177,13 +177,13 @@ public class Indeed {
         ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
 
         try {
-            jobs = ScrapJobs("full stack developer", 20, "", "fulltime", "3");
+            jobs = ScrapJobs("front end developer", 20, "", "fulltime", "3");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         for (EmploiJob job : jobs) {
-            addJob(job, "FullStack", "Indeed");
+            addJob(job, "FrontEnd", "Indeed");
         }
 
     }

@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class CSVRequirements {
     public static void saveCSVRequirements() throws FileNotFoundException {
-        File csvFile = new File("fullstack.csv");
+        File csvFile = new File("frontend.csv");
         PrintWriter out = new PrintWriter(csvFile);
         // ArrayList<EmploiJob> jobs = fetchJobs();
-        ArrayList<EmploiJob> jobs = fetchJobsDomaine("FullStack");
+        ArrayList<EmploiJob> jobs = fetchJobsDomaine("FrontEnd");
 
         for (EmploiJob job : jobs) {
             char[] requirement = job.requirements.toCharArray();
@@ -42,7 +42,7 @@ public class CSVRequirements {
                     requirements[60], requirements[62], requirements[64], requirements[66], requirements[68],
                     requirements[70], requirements[72], requirements[74], requirements[76], requirements[78],
                     requirements[80], requirements[82], requirements[84], requirements[86], requirements[88],
-                    "FullStack");
+                    "FrontEnd");
 
         }
 
