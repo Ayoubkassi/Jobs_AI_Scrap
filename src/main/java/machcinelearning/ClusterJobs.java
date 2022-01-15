@@ -22,6 +22,18 @@ import weka.core.Instances;
  * @author pattern
  */
 public class ClusterJobs {
+    
+    public static void buildModel(int n) throws FileNotFoundException, IOException, Exception{
+               Instances data = new Instances(new BufferedReader(new FileReader("ClusterData.arff")));
+                EM model = new EM();
+
+                model.setNumClusters(n);
+
+                 model.buildClusterer(data);
+                 
+                 weka.core.SerializationHelper.write("cluster_model.model",model);
+
+    }
 
     public static HashMap<Integer, ArrayList<EmploiJob>> getClusters(int n)
             throws FileNotFoundException, IOException, Exception {
@@ -34,6 +46,10 @@ public class ClusterJobs {
         model.setNumClusters(n);
 
         model.buildClusterer(data);
+        
+        //build model
+        //weka.core.SerializationHelper.write("cluster_model.model",model);
+        
         System.out.println(model);
 
         ArrayList<EmploiJob> jobs = fetchJobs();
@@ -77,7 +93,8 @@ public class ClusterJobs {
         // System.out.println("**************");
         // }
 
-        evaluateCluster();
+        //evaluateCluster();
+        buildModel(4);
     }
 
 }

@@ -43,7 +43,8 @@ public class Work extends javax.swing.JFrame {
     }
 
     // this is the constructor that we gonna be working with
-    public Work(String startdate, String enddate, String domaine, String type, String country, String indeed, String rekrute, String emploi) throws IOException, SQLException, ClassNotFoundException {
+    public Work(String startdate, String enddate, String domaine, String type, String country, String indeed,
+            String rekrute, String emploi) throws IOException, SQLException, ClassNotFoundException {
         initComponents();
         String datee = enddate.split("-")[0];
         // System.out.println(datee);
@@ -64,9 +65,9 @@ public class Work extends javax.swing.JFrame {
         System.out.println("Diff in days : " + dateDiff.difference_In_Days);
         System.out.println("Diff in hours : " + dateDiff.difference_In_Hours);
 
-
         if (scrapeRateConfigs.get("scrape_rate_context").toString().toLowerCase().equals("hours")) {
-            if (dateDiff.difference_In_Hours < Integer.parseInt(scrapeRateConfigs.get("scrape_rate_count").toString())) {
+            if (dateDiff.difference_In_Hours < Integer
+                    .parseInt(scrapeRateConfigs.get("scrape_rate_count").toString())) {
                 offres = fetchJobsParamsDate(datee, domaine, type, country, indeed, rekrute, emploi);
             } else {
                 // scrap data
