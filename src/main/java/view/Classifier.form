@@ -139,7 +139,7 @@
               <Font name="Liberation Sans" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Jobs Classifier"/>
           </Properties>
@@ -213,7 +213,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="17" style="1"/>
@@ -233,7 +233,7 @@
               <Font name="Liberation Sans" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Prediction"/>
           </Properties>
@@ -295,7 +295,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="16" style="1"/>
@@ -312,7 +312,7 @@
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="18" style="1"/>

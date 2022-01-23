@@ -3,10 +3,11 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -106,7 +107,7 @@
               <Font name="Liberation Sans" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="GET RECOMMANDATIONS"/>
           </Properties>
@@ -117,7 +118,7 @@
               <Font name="Liberation Sans" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="SKILLS : "/>
           </Properties>
@@ -127,7 +128,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="18" style="1"/>
@@ -147,7 +148,7 @@
               <Font name="Liberation Sans" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="You Need To Learn : "/>
           </Properties>
@@ -165,7 +166,7 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="2b" red="8c" type="rgb"/>
+              <Color blue="db" green="78" red="21" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Liberation Sans" size="18" style="1"/>

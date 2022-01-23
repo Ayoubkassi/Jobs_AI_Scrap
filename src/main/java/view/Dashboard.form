@@ -73,13 +73,13 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="2b" red="8c" type="rgb"/>
+          <Color blue="db" green="78" red="21" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="2b" red="8c" type="rgb"/>
+          <Color blue="db" green="78" red="21" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ADMIN DASHBOARD"/>
       </Properties>
@@ -101,7 +101,7 @@
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="2b" red="8c" type="rgb"/>
+          <Color blue="db" green="78" red="21" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Scrape Rate"/>
       </Properties>
@@ -109,7 +109,7 @@
     <Component class="javax.swing.JButton" name="saveBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="2b" red="8c" type="rgb"/>
+          <Color blue="db" green="78" red="21" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>
@@ -126,7 +126,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e0" green="2b" red="8c" type="rgb"/>
+          <Color blue="db" green="78" red="21" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>

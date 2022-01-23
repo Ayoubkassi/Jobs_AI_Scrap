@@ -237,6 +237,11 @@ public class Intermed extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Work With Database DATA");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -396,18 +401,21 @@ public class Intermed extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void RecruteBActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_RecruteBActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_RecruteBActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //here too
         PreTraining cp = null;
 
         cp = new PreTraining();
 
         cp.setVisible(true);
         this.setVisible(false);
-    }// GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void RecruteBActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_RecruteBActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_RecruteBActionPerformed
+
 
     private void titleActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_titleActionPerformed
         // TODO add your handling code here:
