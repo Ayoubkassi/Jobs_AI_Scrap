@@ -11,6 +11,7 @@ import static java.lang.Integer.max;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import static machcinelearning.ClassificationJ48.classify;
 import static machcinelearning.ClassificationJ48.predInstance;
@@ -317,6 +318,10 @@ public class Classifier extends javax.swing.JFrame {
             model.addRow(row);
         }
 
+    }
+    
+    public  JPanel getPanel(){
+        return jPanel1;
     }
 
     public static void main(String args[]) {
