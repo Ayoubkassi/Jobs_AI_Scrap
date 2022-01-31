@@ -13,6 +13,7 @@ import design.service.ServiceMail;
 import design.service.ServiceUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.invoke.MethodHandles;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -28,7 +29,7 @@ import view.Intermed;
 public class Main extends javax.swing.JFrame {
 
     private final DecimalFormat df = new DecimalFormat("##0.###", DecimalFormatSymbols.getInstance(Locale.US));
-    private MigLayout layout;
+    public MigLayout layout;
     private PanelCover cover;
     private PanelLoading loading;
     private PanelVerifyCode verifyCode;
@@ -43,6 +44,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         init();
     }
+    
+    
 
     private void init() {
         service = new ServiceUser();
@@ -290,7 +293,11 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void closeWin(){
+       this.setVisible(false);
+   
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

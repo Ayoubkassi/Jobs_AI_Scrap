@@ -13,6 +13,9 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.JLabel;
 import net.miginfocom.swing.MigLayout;
+import view.LoginAdmin;
+import design.frontend.Main;
+
 
 public class PanelCover extends javax.swing.JPanel {
 
@@ -24,6 +27,7 @@ public class PanelCover extends javax.swing.JPanel {
     private JLabel description1;
     private ButtonOutLine button;
     private boolean isLogin;
+    private ButtonOutLine button1;
 
     public PanelCover() {
         initComponents();
@@ -35,7 +39,7 @@ public class PanelCover extends javax.swing.JPanel {
     }
 
     private void init() {
-        title = new JLabel("Welcome Back!");
+        title = new JLabel("Welcome To Jobs Scraper");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(245, 245, 245));
         add(title);
@@ -46,16 +50,34 @@ public class PanelCover extends javax.swing.JPanel {
         description1.setForeground(new Color(245, 245, 245));
         add(description1);
         button = new ButtonOutLine();
+        button1 = new ButtonOutLine();
         button.setBackground(new Color(255, 255, 255));
         button.setForeground(new Color(255, 255, 255));
         button.setText("SIGN IN");
+        button1.setBackground(new Color(255, 255, 255));
+        button1.setForeground(new Color(255, 255, 255));
+        button1.setText("SIGN IN AS ADMIN");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 event.actionPerformed(ae);
             }
         });
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+//                event.actionPerformed(ae);
+                  LoginAdmin cp = null;
+
+                  cp = new LoginAdmin();
+
+                  cp.setVisible(true);
+                  
+                  
+            }
+        });
         add(button, "w 60%, h 40");
+        add(button1, "w 60%, h 40");
     }
 
     @SuppressWarnings("unchecked")
