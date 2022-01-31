@@ -61,7 +61,7 @@ public class Indeed {
             try {
                 for (Element element : scriptElements) {
                     scr_num++;
-                    if (scr_num == 25) {
+                    if (scr_num == 26) {
                         for (DataNode node : element.dataNodes()) {
                             data = node.getWholeData();
                             System.out.println("data *************");
@@ -134,7 +134,7 @@ public class Indeed {
                                 // save Emploi and add Array
                                 EmploiJob offre = new EmploiJob(title, type, experience, ville, req, "1", job_link,
                                         date);
-                                System.out.println(offre.toString());
+                                //System.out.println(offre.toString());
                                 offres.add(offre);
                                 offre.affiche();
 
