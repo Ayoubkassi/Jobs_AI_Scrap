@@ -86,7 +86,7 @@ public class Intermed extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("DASHBOARD");
+        jLabel3.setText("DATA SCRAPING");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,31 +98,61 @@ public class Intermed extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ClASSIFICATION");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CLUSTERING");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel5MousePressed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("RECOMMANDATION");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel6MousePressed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("APPLY FOR JOBS");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("WHAT U NEED");
+        jLabel8.setText("WHAT TO LEARN");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel8MousePressed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("STATISTICS");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel9MousePressed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -446,6 +476,56 @@ public class Intermed extends javax.swing.JFrame {
         cp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel11MousePressed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        // TODO add your handling code here:
+        Classifier cp = null;
+        cp = new Classifier();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+        JobsClassification cp = null;
+        try {
+            cp = new JobsClassification();
+        } catch (Exception ex) {
+            Logger.getLogger(Blade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MousePressed
+
+    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
+        // TODO add your handling code here:
+        CompatibleJobs cp = null;
+        cp = new CompatibleJobs();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel6MousePressed
+
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        // TODO add your handling code here:
+        JobsApplications cp = null;
+        cp = new JobsApplications ();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
+        // TODO add your handling code here:
+        Recomandations cp = null;
+        cp = new Recomandations();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel8MousePressed
+
+    private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
+        MostTechs cp = null;
+        cp = new MostTechs();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel9MousePressed
 
     private void RecruteBActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_RecruteBActionPerformed
         // TODO add your handling code here:

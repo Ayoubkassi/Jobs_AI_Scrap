@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -58,7 +60,7 @@ public class Blade extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DASHBOARD");
+        jLabel2.setText("DATA SCRAPING");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,31 +72,61 @@ public class Blade extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ClASSIFICATION");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CLUSTERING");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("RECOMMANDATION");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel5MousePressed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("APPLY FOR JOBS");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel6MousePressed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("WHAT U NEED");
+        jLabel7.setText("WHAT TO LEARN");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("STATISTICS");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel8MousePressed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +189,9 @@ public class Blade extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/design/LOGO.jpg"))); // NOI18N
+        
+	 // jLabel10.setIcon(new javax.swing.ImageIcon("/home/ryota/Desktop/CRUD/Java_Desktop/src/main/java/design/LOGO.jpg"));
+	jLabel10.setIcon(new javax.swing.ImageIcon("/home/ryota/Desktop/CRUD/Java_Desktop/src/main/java/design/LOGO.jpg"));
 
         jLabel11.setFont(new java.awt.Font("Liberation Sans", 1, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 120, 219));
@@ -165,7 +199,7 @@ public class Blade extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Project Encadre By Prof Aniss Moumen");
+        jLabel12.setText("Project Supervised By Dr Aniss Moumen");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,7 +213,7 @@ public class Blade extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
@@ -223,6 +257,54 @@ public class Blade extends javax.swing.JFrame {
         cp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        Classifier cp = null;
+        cp = new Classifier();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        JobsClassification cp = null;
+        try {
+            cp = new JobsClassification();
+        } catch (Exception ex) {
+            Logger.getLogger(Blade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+        CompatibleJobs cp = null;
+        cp = new CompatibleJobs();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MousePressed
+
+    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
+        // TODO add your handling code here:
+        JobsApplications cp = null;
+        cp = new JobsApplications ();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel6MousePressed
+
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        Recomandations cp = null;
+        cp = new Recomandations();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
+        // TODO add your handling code here:
+        MostTechs cp = null;
+        cp = new MostTechs();
+        cp.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel8MousePressed
 
     /**
      * @param args the command line arguments
