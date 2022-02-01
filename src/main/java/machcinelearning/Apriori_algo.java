@@ -131,10 +131,7 @@ public class Apriori_algo {
 			ioe.printStackTrace();
 		}
 
-		// ArrayList<String> skills=new ArrayList<String>(Arrays.asList(new
-		// String[]{}));
-		// System.out.println(model);
-		// System.out.println(recommande(liste_rules,skills));
+		
 
 	}
 

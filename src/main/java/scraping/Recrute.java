@@ -90,10 +90,7 @@ public class Recrute {
                         String experience = info.select("li").get(2).text().substring(21);
                         System.out.println(experience);
 
-                        // String image = scriptElements.get(j).select("div > div > a >
-                        // img").attr("src");
-
-                        // get requirements ready
+                        
                         String[] technologies = { "react", "angular", "vuejs", "html", "css", "javascript", "python",
                                 "sql", "java", "node", "typescript", "c#", "bash", "shell", "c++", "php", "flutter",
                                 "go", "kotlin", "rust", "ruby", "dart", "assembly", "swift", "matlab", "mysql",
@@ -134,19 +131,7 @@ public class Recrute {
             }
 
         }
-
-        //
-        // FileWriter fw = new FileWriter("forUser.txt");
-        //
-        // for(Offre job : jobs){
-        // System.out.println(job.toString());
-        // fw.write(job.toString());
-        // fw.write(System.getProperty("line.separator"));
-        //
-        //
-        // }
-        //
-        // fw.close();
+     
         return offres;
 
     }
@@ -155,5 +140,4 @@ public class Recrute {
         System.out.println("Bismi Allah");
 
     }
-
 }

@@ -24,6 +24,7 @@ public class Indeed {
 
     public static ArrayList<EmploiJob> ScrapJobs(String jobTitle, int n, String country, String type, String date)
             throws IOException {
+        
         String cnt = "";
         String initialDate = date;
 
@@ -53,7 +54,7 @@ public class Indeed {
             final String url = base_url + "&start=" + i + "&jt=" + type + "&fromage=" + date;
             System.out.println(i);
             final Document document = Jsoup.connect(url).get();
-            System.out.println(document);
+            //System.out.println(document);
             Elements scriptElements = document.getElementsByTag("script");
             int scr_num = 0;
             String data = "";
@@ -157,33 +158,25 @@ public class Indeed {
 
         }
 
-        // save in file txt format
-        // FileWriter fw = new FileWriter("data.txt");
-        //
-        //
-        // for(Job job : jobs){
-        // System.out.println(job.toString());
-        // fw.write(job.toString());
-        // fw.write(System.getProperty("line.separator"));
-        // }
-        //
-        // fw.close();
+        
 
         return offres;
     }
+
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         System.out.println("Bismi Allah");
         ArrayList<EmploiJob> jobs = new ArrayList<EmploiJob>();
 
         try {
-            jobs = ScrapJobs("front end developer", 20, "", "fulltime", "3");
+            
+            jobs = ScrapJobs("back end",2, "", "fulltime", "3");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         for (EmploiJob job : jobs) {
-            addJob(job, "FrontEnd", "Indeed");
+            addJob(job, "BackEnd", "Indeed");
         }
 
     }

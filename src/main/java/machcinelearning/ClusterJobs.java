@@ -86,14 +86,7 @@ public class ClusterJobs {
     }
 
     public static void main(String args[]) throws Exception {
-        // HashMap<Integer,ArrayList<EmploiJob>> jobsType = getClusters(4);
-        // for (Map.Entry<Integer, ArrayList<EmploiJob>> entry : jobsType.entrySet()) {
-        // System.out.println("Key = " + entry.getKey() + ", Value = " +
-        // entry.getValue());
-        // System.out.println("**************");
-        // }
-
-        //evaluateCluster();
+        
         buildModel(4);
     }
 

@@ -16,9 +16,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * @author pattern
  */
 
-public class SeleniumAuto {
+public class SeleniumAuto implements ScriptingInterface{
 
-    public static void jobsApplies(String login, String pass, String message)
+    @Override
+    public void jobsApplies(String login, String pass, String message)
             throws ClassNotFoundException, SQLException, InterruptedException {
 
         // initialize data
@@ -47,6 +48,6 @@ public class SeleniumAuto {
     }
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
-        jobsApplies("ayoub.kassi@uit.ac.ma", "3117G0F597", "Hey Hey and welocme again");
+        //jobsApplies("ayoub.kassi@uit.ac.ma", "3117G0F597", "Hey Hey and welocme again");
     }
 }

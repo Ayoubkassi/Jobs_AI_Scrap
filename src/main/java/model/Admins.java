@@ -8,7 +8,7 @@ package model;
  *
  * @author pattern
  */
-public class Admins {
+public class Admins extends User{
     private int id;
     private String username;
     private String password;

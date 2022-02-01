@@ -73,7 +73,7 @@ public class Work extends javax.swing.JFrame {
                 // scrap data
                 if (indeed.equals("Indeed")) {
                     // scrap indeed
-                    offres = ScrapJobs("Software Engineer", 10, "", type, "3");
+                    offres = ScrapJobs("Software Engineer", 2, "", type, "3");
                     for (EmploiJob job : offres) {
                         // and add into database
                         addJob(job, "FullStack", "Indeed");

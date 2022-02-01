@@ -4,7 +4,7 @@
  */
 package view;
 
-import static algorithms.SeleniumAuto.jobsApplies;
+import algorithms.SeleniumAuto;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -170,7 +170,8 @@ public class AllJobsApply extends javax.swing.JFrame {
                 String Message = message.getText();
 
                 try {
-                        jobsApplies(login, pass, Message);
+                         SeleniumAuto selenium = new SeleniumAuto();
+                        selenium.jobsApplies(login, pass, Message);
                 } catch (ClassNotFoundException ex) {
                         Logger.getLogger(AllJobsApply.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {

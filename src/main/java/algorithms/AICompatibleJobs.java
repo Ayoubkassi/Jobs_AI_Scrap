@@ -51,9 +51,5 @@ public class AICompatibleJobs {
         return bestJobs;
     }
 
-    public static void main(String[] args) {
-
-        // getCompatibleJobs("html css js react");
-
-    }
+    
 }

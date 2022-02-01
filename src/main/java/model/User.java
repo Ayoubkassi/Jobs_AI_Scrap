@@ -21,6 +21,10 @@ public class User {
         this.pasword = pasword;
         this.secteur = secteur;
     }
+    
+    public User(){
+        
+    }
 
     // setters and getters
 

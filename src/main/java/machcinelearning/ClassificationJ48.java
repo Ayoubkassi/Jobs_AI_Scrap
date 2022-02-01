@@ -4,10 +4,12 @@
  */
 package machcinelearning;
 
+import java.util.Random;
 import javax.swing.JFrame;
 import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
+import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.DenseInstance;
 import weka.core.Instance;
@@ -39,7 +41,7 @@ public class ClassificationJ48 {
 		attSelect.SelectAttributes(data);
 		int[] indices = attSelect.selectedAttributes();
 		System.out.println("Selected attributes: " + Utils.arrayToString(indices));
-
+                
 		/*
 		 * Build a decision tree
 		 */
@@ -49,7 +51,13 @@ public class ClassificationJ48 {
 		tree.setOptions(options);
 		tree.buildClassifier(data);
 		System.out.println(tree);
-
+                
+                Evaluation eval_roc = new Evaluation(data);
+		eval_roc.crossValidateModel(tree, data, 10, new Random(1), new Object[] {});
+		System.out.println(eval_roc.toSummaryString());
+		// Confusion matrix
+		double[][] confusionMatrix = eval_roc.confusionMatrix();
+		System.out.println(eval_roc.toMatrixString());
 		// Classify new instance.
 
 		double[] vals = new double[data.numAttributes()];

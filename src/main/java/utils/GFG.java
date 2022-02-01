@@ -68,14 +68,4 @@ public class GFG {
         }
     }
 
-//    Toast.makeText(getApplicationContext(), "Last Scrape date/time : " + lastScrapeDate + "\nCurrent date/time : " + currentDateTime + "\nDiff in date/time : " + dateTimeDiff.difference_In_Years
-//                + " years, "
-//                        + dateTimeDiff.difference_In_Days
-//                + " days, "
-//                        + dateTimeDiff.difference_In_Hours
-//                + " hours, "
-//                        + dateTimeDiff.difference_In_Minutes
-//                + " minutes, "
-//                        + dateTimeDiff.difference_In_Seconds
-//                + " seconds", Toast.LENGTH_SHORT).show();
 }

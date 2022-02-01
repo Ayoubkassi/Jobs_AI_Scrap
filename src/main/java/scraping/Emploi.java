@@ -107,16 +107,11 @@ public class Emploi {
 
         jobs = getJobs("", 20);
 
-        // jobs = getJobsGen("developpeur",10);
 
         for (EmploiJob job : jobs) {
             addJob(job, "Informatique", "Rekrute");
         }
 
-        // jobs = fetchJobsParams("Informatique","CDI","","Indeed","Rekrute","");
-        // int i =0;
-        // for(EmploiJob emp : jobs){
-        // System.out.println(++i);
-        // }
+       
     }
 }
